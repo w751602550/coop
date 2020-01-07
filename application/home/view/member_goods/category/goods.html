@@ -1,0 +1,130 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li><a href="{:url('memberGoods.category/index')}">商品分类</a></li>
+        <li><a href="{:url('memberGoods.category/add')}">添加分类</a></li>
+        <li><a href="{:url('memberGoods.category/addAll')}">批量添加分类</a></li>
+        <li class="active"><a href="{:url('memberGoods.category/addGoods')}">添加分类商品</a></li>
+    </ul>
+</div>
+<form method="get" target="_self">
+    <table class="dsm-search-table">
+        <tbody>
+        <tr>
+            <td>&nbsp;</td>
+            <th>当前分类</th>
+            <td class="w100">
+                <select name="category_id" class="text w200">
+                    {if $categoryList}
+                    {volist name='categoryList' id='vo'}
+                    <option value="{$vo.category_id}" {if $vo.category_id== $category_id}selected{/if} disabled>{$vo.name}</option>
+                    {present name='vo.child'}
+                    {volist name='vo.child' id='sub'}
+                    <option value="{$sub.category_id}" {if $sub.category_id== $category_id}selected{/if} disabled>|---{$sub.name}</option>
+                    {present name='sub.child'}
+                    {volist name='sub.child' id='third'}
+                    <option value="{$third.category_id}" {if $third.category_id== $category_id}selected{/if}>|---|---{$third.name}</option>
+                    {/volist}
+                    {/present}
+                    {/volist}
+                    {/present}
+                    {/volist}
+                    {/if}
+                </select>
+            </td>
+            <td class="w500"></td>
+            <td class="w160"><input type="text" class="text w150" name="keywords" value="{$keywords}"
+                                    placeholder="商品名称">
+            </td>
+            <td class="w70 tc">
+                <input type="submit" class="submit" value="搜索">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<div class="dsm-default-form fl" style="width: 100%;">
+    <form id="my-form">
+        <table class="dsm-default-table">
+            <thead>
+            <tr ds_type="table_header">
+                <th class="w30"><input type="checkbox" class="check-all"></th>
+                <th class="w70"></th>
+                <th class="tl">物品名称</th>
+                <th>商品编号</th>
+                <th class="w200">所属分类</th>
+                <th class="w100">合约价格</th>
+                <th class="w90">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {if !$goodsList->isEmpty()}
+            {volist name='goodsList' id='vo'}
+            <tr class="bd-line">
+                <td>{if $vo.category_id != $category_id}<input type="checkbox" class="check-item" name="goods[]" value="{$vo.member_goods_id}">{/if}</td>
+                <td>
+                    <div class="goods-pic-small">
+                        <span class="thumb size60"> <i></i>
+                            <a href="" target="_blank">
+                                <img height="46" width="60" src="{$vo.thumb}"></a>
+                        </span>
+                    </div>
+                </td>
+                <td class="tl">
+                    {$vo.name}
+                </td>
+                <td>{$vo.member_goods_id}</td>
+                <td>{if $vo.category_name}{$category[$vo.cid1]}&gt;{$category[$vo.cid2]}&gt;{$category[$vo.cid3]}{/if}</td>
+                <td>{$vo.price}</td>
+                <td>
+                    <p>
+                        {if $category_id == $vo.category_id}
+                        <a href="javascript:void(0)" class="dsm-btn dsm-btn-red rm-goods-one"
+                           data-id="{$vo.member_goods_id}">移除</a>
+                        {else /}
+                        <a href="javascript:void(0)" class="dsm-btn dsm-btn-blue add-goods-one"
+                           data-id="{$vo.member_goods_id}">添加</a>
+                        {/if}
+
+                    </p>
+                </td>
+            </tr>
+            {/volist}
+            {/if}
+            <tr>
+                <td colspan="2">
+                    <a href="javascript:void(0)" class="dsm-btn dsm-btn-blue add-goods bin-submit">批量加入</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="20">
+                    <div class="pagination">{$goodsList->render()|raw}</div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </form>
+</div>
+<script>
+    $('select[name=category_id]').change(function(){
+       location.href="{:url('memberGoods.category/addGoods')}"+'?category_id='+$(this).val();
+    })
+    $('.check-all').on('click', function () {
+        let type = $(this).prop('checked');
+        $('.check-item').prop('checked', type);
+    });
+    $('.bin-submit').on('click', function () {
+        let checknum = $('.check-item:checked').length;
+        if(checknum == 0){
+            layer.alert('请勾选需加入分类的商品');
+        }else{
+            $('#my-form').ajaxpost();
+        }
+    });
+    $('.rm-goods-one').delete('member_goods_id', "{:url('memberGoods.category/deleteGoodsOne',['category_id'=>$category_id])}", '是否将该商品移除本类目');
+    $('.add-goods-one').delete('member_goods_id', "{:url('memberGoods.category/addGoodsOne',['category_id'=>$category_id])}", '是否将该商品加入本类目');
+</script>
+{/block}

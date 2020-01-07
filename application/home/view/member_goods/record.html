@@ -1,0 +1,44 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="/">合约商品缓存记录表</a></li>
+    </ul>
+</div>
+<table class="dsm-default-table">
+    <thead>
+    <tr ds_type="table_header">
+        <th class="w30">#</th>
+        <th class="tl w150">文件名</th>
+        <th class="w150">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {if $list}
+    {volist name='list' id='vo'}
+    <tr class="bd-line">
+        <td>{$i}</td>
+        <td class="tl">
+            <dl class="goods-name">
+                <dt>{$vo}</dt>
+            </dl>
+        </td>
+        <td>
+            <div class="tpl-table-black-operation">
+                <a href="{:url('memberGoods/downRecord',['record'=>$vo])}" class="downRecord">
+                    <i class="icon iconfont">&#xe672;</i> 下载
+                </a>
+                <a href="javascript:;" class="rmRecord tpl-table-black-operation-del" data-id="{$vo}">
+                    删除
+                </a>
+            </div>
+        </td>
+    </tr>
+    {/volist}
+    {/if}
+    </tbody>
+</table>
+<script>
+    $('.rmRecord').delete("record","{:url('memberGoods/rmRecord')}");
+</script>
+{/block}

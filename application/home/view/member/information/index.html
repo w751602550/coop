@@ -1,0 +1,138 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="/index.php/home/memberinformation/index.html">基本信息</a></li>
+    </ul>
+</div>
+
+<div class="dsm-user-profile">
+    <div class="dsm-default-form fr">
+        <form method="post" id="profile_form" action="/index.php/home/memberinformation/index.html"
+              novalidate="novalidate">
+            <input type="hidden" name="old_member_avatar" value="">
+            <dl>
+                <dt>用户名称：</dt>
+                <dd>
+                    <span class="w400">binbin</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>邮箱：</dt>
+                <dd>
+                    <span class="w400">
+                        12154515@qq.com&nbsp;
+                        <a href="/index.php/home/membersecurity/auth/type/modify_email.html">更换邮箱</a>
+                   </span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>手机号码：</dt>
+                <dd>
+                    <span class="w400">
+                        12154515@qq.com&nbsp;
+                        <a href="/index.php/home/membersecurity/auth/type/modify_email.html">更换邮箱</a>
+                   </span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>真实姓名：</dt>
+                <dd>
+                    <span class="w400">
+                        <input type="text" class="text" maxlength="20" name="member_truename" value="">
+                    </span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>性别：</dt>
+                <dd>
+                    <span class="w400">
+                        <label><input type="radio" name="member[gender]" value="3" checked="checked">保密</label>
+                        <label><input type="radio" name="member[gender]" value="2">女</label>
+                        <label><input type="radio" name="member[gender]" value="1">男</label>
+                    </span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>所在地区：</dt>
+                <dd>
+                    <span class="w400">
+                        <input type="hidden" value="0" name="province_id" id="_area_1">
+                        <input type="hidden" value="0" name="city_id" id="_area_2">
+                        <input type="hidden" value="0" name="area_id" id="_area_3">
+                        <select><option value="">-请选择-</option>
+                            <option value="1">北京</option>
+                        </select>
+                    </span>
+
+                </dd>
+            </dl>
+            <dl>
+                <dt>QQ：</dt>
+                <dd><span class="w400">
+                        <input type="text" class="text" maxlength="30" name="member_qq" value="">
+                    </span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>阿里旺旺：</dt>
+                <dd><span class="w400">
+                        <input name="member_ww" type="text" class="text" maxlength="50" id="member_ww" value="">
+                    </span>
+                </dd>
+            </dl>
+            <dl class="bottom">
+                <dt></dt>
+                <dd>
+                    <input type="submit" class="submit" value="保存修改">
+                </dd>
+            </dl>
+        </form>
+    </div>
+</div>
+
+
+<script src="/static/plugins/mlselection.js"></script>
+<script type="text/javascript">
+    //注册表单验证
+    $(function () {
+        $("#region").ds_region();
+        $('#birthday').datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            changeYear: true
+        });
+        $('#profile_form').validate({
+            submitHandler: function (form) {
+                if ($('select[class="valid"]').eq(0).val() > 0) $('#province_id').val($('select[class="valid"]').eq(0).val());
+                if ($('select[class="valid"]').eq(1).val() > 0) $('#city_id').val($('select[class="valid"]').eq(1).val());
+                ds_ajaxpost('profile_form', 'default');
+            },
+            rules: {
+                member_truename: {
+                    minlength: 2,
+                    maxlength: 20
+                },
+                member_qq: {
+                    digits: true,
+                    minlength: 5,
+                    maxlength: 12
+                }
+            },
+            messages: {
+                member_truename: {
+                    minlength: '姓名长度大于等于2位小于等于20位',
+                    maxlength: '姓名长度大于等于2位小于等于20位'
+                },
+                member_qq: {
+                    digits: '请填入正确的QQ号码',
+                    minlength: '请填入正确的QQ号码',
+                    maxlength: '请填入正确的QQ号码'
+                }
+            }
+        });
+    });
+</script>
+
+{/block}

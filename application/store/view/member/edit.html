@@ -1,0 +1,118 @@
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <form id="my-form" class="am-form tpl-form-line-form">
+                    <div class="widget-body">
+                        <fieldset>
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">基本信息</div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">用户名 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    {$member.member_name}
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">密码 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="password" class="tpl-form-input" id="member-pwd" name="member[password]"
+                                           placeholder="6 位数以上的密码" pattern="^\d{6,}$">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">确认密码 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="password" class="tpl-form-input" name="member[password_confirm]"
+                                           placeholder="请与上面输入的值一致" data-equal-to="#member-pwd">
+                                    <div class="help-block am-margin-top-sm">
+                                        <small>不填写，则不更改密码</small>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">详细信息</div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">姓名 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="text" class="tpl-form-input" name="member[true_name]"
+                                           value="{$member.true_name}">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label ">头像 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <div class="am-form-file">
+                                        <div class="am-form-file">
+                                            <button type="button"
+                                                    class="upload-file am-btn am-btn-secondary am-radius">
+                                                <i class="am-icon-cloud-upload"></i> 选择图片
+                                            </button>
+                                            {if ($member.image_url)}
+                                            <div class="uploader-list am-cf">
+                                                <div class="file-item">
+                                                    <a href="{$member.image_url}" title="点击查看大图" target="_blank">
+                                                        <img src="{$member.image_url}">
+                                                    </a>
+                                                    <input type="hidden" name="$member[image_id]"
+                                                           value="{$member.image_id}">
+                                                    <i class="iconfont icon-shanchu file-item-delete"></i>
+                                                </div>
+                                            </div>
+                                            {/if}
+                                        </div>
+                                        <div class="help-block am-margin-top-sm">
+                                            <small>尺寸750x750像素以上，大小2M以下 (可拖拽图片调整显示顺序 )</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">性别 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <label class="am-radio-inline">
+                                        <input type="radio" name="member[gender]" value="1" data-am-ucheck {if
+                                               ($member.gender.value== 1)} checked {/if}>
+                                        男
+                                    </label>
+                                    <label class="am-radio-inline">
+                                        <input type="radio" name="member[gender]" value="2" data-am-ucheck {if
+                                               ($member.gender.value==2)} checked {/if}>
+                                        <span class="am-link-muted">女</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">联系方式 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="text" class="tpl-form-input" name="member[phone]" value="{$member.phone}">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3 am-margin-top-lg">
+                                    <button type="submit" class="j-submit am-btn am-btn-secondary">提交
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="layouts/_template/tpl_file_item" /}
+{include file="layouts/_template/file_library" /}
+<script>
+    $(function () {
+        $('.upload-file').selectImages({
+            name: 'member[image_url]'
+        });
+        $('#my-form').superForm();
+
+    });
+</script>

@@ -1,0 +1,80 @@
+<?php
+
+
+namespace app\store\controller\member;
+
+use app\store\controller\Base;
+use app\store\model\Member;
+use app\store\model\MemberGoods;
+use app\store\model\Goods as goodsmodel;
+use think\facade\Session;
+use app\store\model\GoodsUnit;//单位model
+
+class Goods extends Base
+{
+    public function all_list()
+    {
+        $list = (new MemberGoods)->getPage();
+        return $this->fetch('all_list', compact('list'));
+    }
+
+    public function index($member_id)
+    {
+        $member = (new Member)->detail($member_id);
+        if (!$member)
+            return ajaxError(getchina('noData'));
+        $list = (new MemberGoods)->getPage(['member_id' => $member_id]);
+        return $this->fetch('index', compact('list', 'member'));
+    }
+
+    public function add($member_id)
+    {
+        $member = (new Member)->detail($member_id);
+        if (!$member)
+            return ajaxError(getchina('noData'));
+        $model = new MemberGoods();
+        if ($this->ajax) {
+            $goods = postData('goods');
+            if ($model->add($goods, $member_id))
+                return ajaxSuccess(getchina('addSuccess'),url('index',['member_id'=>$member_id]));
+            return ajaxError(getchina('addError'));
+        }
+        $list = (new goodsmodel)->getPage($member_id);
+        $member_goods_id=$model->getMemberGoodsId($member_id);
+        return $this->fetch('add', compact('list', 'member','member_goods_id'));
+    }
+	//合约商品编辑功能
+	public function edit($goods_id,$member_id){
+	
+		$goods =Db('member_goods')->where('member_goods_id',$goods_id)->where('member_id',$member_id)->find();
+        $unit=(new GoodsUnit)->getAll();//得到单位属性
+		$model = new MemberGoods();
+		if (!$goods)
+            return ajaxError(getchina('noData'));
+        if($this->ajax){
+            $post=postData('goods');
+			
+            if($model->edit($post,$member_id,$goods_id))
+                return ajaxSuccess(getchina('updateSuccess'));
+            return ajaxError(getchina('updateError'));
+        }
+		$this->assign('goods',$goods);
+        return $this->fetch('edit',compact('detail','unit'));
+		
+	}
+
+    public function delete($member_goods_id, $member_id)
+    {
+        if ($this->ajax) {
+            $condition = [
+                'member_goods_id' => $member_goods_id,
+                'member_id' => $member_id,
+            ];
+            if ((new MemberGoods)->setDelete($condition))
+                return ajaxSuccess(getchina('deleteSuccess'), url('index', ['member_id' => $member_id]));
+            return ajaxError(getchina('deleteError'));
+        }
+    }
+
+
+}

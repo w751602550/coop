@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>广货商城</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/static/home/css/common.css">
+    <link rel="stylesheet" href="/static/home/css/home_header.css">
+    <script>
+        var BASESITEROOT = "";
+        var HOMESITEROOT = "/static/home";
+        var BASESITEURL = "{$base_url}";
+        var HOMESITEURL = "{$base_url}/home";
+    </script>
+    <script src="/static/plugins/jquery-2.1.4.min.js"></script>
+    <script src="/static/plugins/common.js"></script>
+    <script src="/static/plugins/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/static/plugins/jquery.validate.min.js"></script>
+    <script src="/static/plugins/additional-methods.min.js"></script>
+    <script src="/static/plugins/layer/layer.js"></script>
+    <script src="/static/plugins/js/dialog/dialog.js" id="dialog_js" charset="utf-8"></script>
+</head>
+<body>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="public-top">
+    <div class="w1200">
+                <span class="top-link">
+                    您好，欢迎来到 <em>广货商城</em>
+                </span>
+        <ul class="login-regin">
+            <li class="line"> <a href="{:url('member/index')}">{$member.member.member_name}</a></li>
+            <li> <a href="{:url('member/logout')}">退出</a></li>
+        </ul>
+
+        <ul class="quick_list">
+            <li>
+                <span class="outline"></span>
+                <span class="blank"></span>
+                <a href="{:url('member/index')}">用户中心<b></b></a>
+                <div class="dropdown-menu">
+                    <ol>
+                        <li><a href="{:url('member.order/index')}">已买到的商品</a></li>
+                        <li><a href="{:url('member.favorite/index')}">我关注的商品</a></li>
+
+                    </ol>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+

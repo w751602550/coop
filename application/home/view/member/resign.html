@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>广货商城-注册页面</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/home/css/common.css">
+    <link rel="stylesheet" href="/static/home/css/home_header.css">
+    <script>
+        var BASESITEROOT = "";
+        var HOMESITEROOT = "/static/home";
+        var BASESITEURL = "{:base_url()}";
+        var HOMESITEURL = "{:base_url()}";
+    </script>
+    <script src="/static/plugins/jquery-2.1.4.min.js"></script>
+    <script src="/static/plugins/common.js"></script>
+    <script src="/static/plugins/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/static/plugins/jquery.validate.min.js"></script>
+    <script src="/static/plugins/additional-methods.min.js"></script>
+    <script src="/static/plugins/layer/layer.js"></script>
+    <script src="/static/plugins/js/dialog/dialog.js" id="dialog_js" charset="utf-8"></script>
+</head>
+<body>
+
+<link rel="stylesheet" href="/static/home/css/home.css">
+<div class="header-login clearfix">
+    <div class="w1200">
+        <div class="logo">
+            <a href="http://dsmall.com/index.php/home">
+                <img src="http://www.360gh.com/data/upload/shop/common/05041196300000964.png"/></a>
+        </div>
+		<div id="" class="" style='width:30%;float:right;font-size:16px;line-height:70px;'>
+			已有账号 <a href="{:url('member/login')}">马上登陆</a>
+		</div>
+    </div>
+</div>
+
+<div class="page_login clearfix"
+     style="background-image: url('/static/home/images/login/login-bg.jpg');background-position: center center;">
+    <div class="w1000">
+        <div class="login_form">
+            <div class="mt">
+                <a href="javascript:void(0)" class="on"><span>账户注册</span><i></i></a>
+            </div>
+            <div class="mc">
+                <form id="login_normal_form" action ="{:url('member/addmember')}"method="post">
+                    <div class="item">
+                        <div class="text-area">
+                            <div class="iconfont ico">&#xe702;</div>
+                            <input type="text" id="member_name" name="member[member_name]" class="text"
+                                   placeholder="用户名/手机号" tabindex="1"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="text-area">
+                            <div class="iconfont ico">&#xe67b;</div>
+                            <input type="password" id="member_password" name="member[password]" class="text"
+                                   placeholder="密码" tabindex="2"/>
+                        </div>
+                    </div>
+					<div class="item">
+                        <div class="text-area">
+                            <div class="iconfont ico">&#xe67b;</div>
+                            <input type="password" id="member_repassword" name='member[repassword]' class="text"placeholder="确认密码" tabindex="2"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="text-area">
+                            <div class="iconfont ico">&#xe67b;</div>
+                            <input type="text" id="captcha_normal" name="member[captcha_normal]" class="text"
+                                   style="width:130px;float:left" placeholder="验证码" tabindex="2" maxlength="4"/>
+                            <span class="span">
+                           <img style="position: absolute;top: 0;height:46px;" src="{:url('captcha/makecode')}"
+                                title="看不清，换一张" id="codeimage">
+                                <a class="makecode" href="javascript:void(0);"
+                                   onclick="javascript:document.getElementById('codeimage').src='{:url(\'captcha/makecode\')}'+'?'+(new Date().getTime());">看不清，换一张</a>
+                            </span>
+                        </div>
+                    </div>
+                   
+                    <div class="item">
+                        <input type="submit" class="btn login-btn" value="注册"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".login_form .mt a").click(function () {
+            var index = $(this).index();
+            $(this).parent().next().find("form").hide().eq(index).show();
+            $(this).addClass("on").siblings().removeClass("on");
+        });
+
+        $("#login_normal_form").validate({
+            errorPlacement: function (error, element) {
+                var error_td = element.parent('.text-area');
+                error_td.append(error);
+                element.parents('.text-area:first').addClass('error');
+            },
+            success: function (label) {
+                label.parents('.text-area:first').removeClass('error').find('label').remove();
+            },
+            submitHandler: function (form) {
+                ajaxpost('login_normal_form');
+            },
+            onkeyup: false,
+            rules: {
+                "member[member_name]": "required",
+                'member[password]': "required",
+				'member[repassword]': {
+					  required: true,
+					  equalTo: "#member_password"
+					},
+                'member[captcha_normal]': {
+                    required: true,
+                    remote: {
+                        url: "{:url('captcha/check',['reset'=>'false'])}",
+                        type: 'get',
+                        data: {
+                            captcha: function () {
+                                return $('#captcha_normal').val();
+                            }
+                        },
+                        complete: function (data) {
+                            if (data.responseText == 'false') {
+                                document.getElementById('codeimage').src = "{:url('captcha/makecode')}" + "?" + new Date().getTime();
+                            }
+                        }
+                    }
+                }
+            },
+            messages: {
+                "member[member_name]": "<i class='iconfont'>&#xe64c;</i>请输入已注册的用户名或手机号",
+                'member[password]': "<i class='iconfont'>&#xe64c;</i>密码不能为空",
+				'member[repassword]': "<i class='iconfont'>&#xe64c;</i>两次密码不一致",
+                'member[captcha_normal]': {
+                    required: '<i class="iconfont" title="验证码不能为空">&#xe64c;</i>验证码不能为空',
+                    remote: '<i class="iconfont" title="验证码错误">&#xe64c;</i>验证码错误'
+                }
+            }
+        });
+    });
+</script>
+{include file='layout/mall_footer'/}

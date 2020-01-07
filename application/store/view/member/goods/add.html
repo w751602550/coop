@@ -1,0 +1,206 @@
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-cf">添加合约商品</div>
+                </div>
+                <div class="widget-body am-fr">
+                    <div class="page_toolbar am-margin-bottom-xs am-cf">
+                        <form class="toolbar-form" action="" method="get">
+                            <div class=" am-u-sm-12 am-u-md-3">
+                                用户：{$member.member_name}
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <a class="am-btn am-btn-success"
+                                       href="{:url('member.goods/index',['member_id'=>$member.member_id])}">
+                                        <span class="am-icon-file"></span> 合约商品
+                                    </a>
+                                    <a class="am-btn am-btn-secondary"
+                                       href="{:url('member.goods/add',['member_id'=>$member.member_id])}">
+                                        <span class="am-icon-file"></span> 供应商品
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-9">
+                                <div class="am fr">
+                                    <div class="am-form-group am-fl">
+                                        {php}$category_id=request()->get('category_id'){/php}
+                                        <select name="category_id"
+                                                data-am-selected="{searchBox: 1, btnSize: 'sm',  placeholder: '商品分类', maxHeight: 400}">
+                                            <option value=""></option>
+                                            {if (!empty($category))}
+                                            {volist name='category' id='first'}
+                                            <option value="{$first.category_id}" disabled
+                                                    {$first.category_id==$category_id?'selected':''}>{$first.name}
+                                            </option>
+                                            {if (isset($first.child))}
+                                            {volist name='first.child' id='sub'}
+                                            <option value="{$sub.category_id}" disabled
+                                                    {$sub.category_id==$category_id?'selected':''}> -- {$sub.name}
+                                            </option>
+                                            {if (isset($sub.child))}
+                                            {volist name='sub.child' id='three'}
+                                            <option value="{$three.category_id}" {$three.category_id== $category_id?
+                                            'selected':''}> ---- {$three.name}</option>
+                                            {/volist}
+                                            {/if}
+                                            {/volist}
+                                            {/if}
+                                            {/volist}
+                                            {/if}
+                                        </select>
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        {php}$goods_status=$request->get('goods_status'){/php}
+                                        <select name="goods_status"
+                                                data-am-selected="{btnSize: 'sm', placeholder: '商品状态'}">
+                                            <option value=""></option>
+                                            <option value="10" {$goods_status==10?'selected':''}>上架</option>
+                                            <option value="20" {$goods_status==20?'selected':''}>下架</option>
+                                        </select>
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form">
+                                            <input type="text" class="am-form-field" name="goods_name"
+                                                   placeholder="请输入商品名称"
+                                                   value="{$request->get('goods_name')|raw}">
+                                            <div class="am-input-group-btn">
+                                                <button class="am-btn am-btn-default am-icon-search"
+                                                        type="submit"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="am-scrollable-horizontal am-u-sm-12">
+                        <form method="post" id="my-form" class="am-form tpl-form-line-form">
+                            <input type="hidden" name="member_id" value="{$member.member_id}">
+                            <table width="100%" class="am-table am-table-compact am-table-striped
+                         tpl-table-black am-text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox" class="check_all"></th>
+                                    <th>商品图片</th>
+                                    <th>商品名称</th>
+                                    <th>分类名称</th>
+                                    <th>价格</th>
+                                    <th>市场价</th>
+                                    <th>商品状态</th>
+                                    <th>商城时间</th>
+                                    <th>更新时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {if !$list->isEmpty()}
+                                {volist name='list' id='goods'}
+                                <tr>
+                                    <td class="am-text-middle">
+                                        {if in_array($goods.goods_id,$member_goods_id)}
+                                        <span class="am-text-success am-icon-check"></span>
+                                        {else/}
+                                        <input type="checkbox" class="checkbox-item" name="goods[]"
+                                               value="{$goods.goods_id}">
+                                        {/if}
+                                    </td>
+                                    <td class="am-text-middle">
+                                        <a href="" title="点击查看大图" target="_blank">
+                                            <img src="{$goods.goods_image}"
+                                                 width="50" height="50" alt="商品图片">
+                                        </a>
+                                    </td>
+                                    <td class="am-text-middle">
+                                        <p class="item-title">{$goods.goods_name}</p>
+                                    </td>
+                                    <td class="am-text-middle">{:htmlspecialchars_decode($goods.category_name)}</td>
+                                    <td class="am-text-middle">{$goods.goods_price}</td>
+                                    <td class="am-text-middle">{$goods.goods_marketprice}</td>
+                                    <td class="am-text-middle">
+                                   <span class="j-state am-badge am-badge-{$goods.status.value==1?'success':'warning'}">{$goods.status.text}
+                                   </span>
+                                    </td>
+                                    <td class="am-text-middle">{$goods.goods_edittime|date='Y-m-d H:i:s'}</td>
+                                    <td class="am-text-middle">{$goods.update_time}</td>
+                                    <td class="am-text-middle">
+                                        <div class="tpl-table-black-operation">
+                                            <a href="" target="_blank">
+                                                <i class="am-icon-eye"></i> 查看
+                                            </a>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                {/volist}
+                                {else /}
+                                <tr>
+                                    <td colspan="9" class="am-text-center">暂无记录</td>
+                                </tr>
+                                {/if}
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+
+                    <div class="am-u-sm-12">
+                        <a class="addMemberGoods am-btn am-btn-success am-btn-xs">
+                            <i class="am-icon-plus"></i>加入合约商品
+                        </a>
+                    </div>
+
+                    <div class="am-u-lg-12 am-cf text-center">
+                        <div class="am-fr">{$list->render()|raw}</div>
+                        <div class="am-fr pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总记录：{$list->total()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.check_all').on('click', function () {
+            let type = $(this).prop('checked');
+            $('.checkbox-item').attr('checked', type);
+        });
+        $('.addMemberGoods').on('click', function () {
+            let that = $(this);
+            layer.confirm('是否填加为合约商品', function (index) {
+                that.attr('disabled', true);
+                layer.close(index);
+                let load = layer.load();
+                $.ajax({
+                    type: 'post',
+                    data: $('#my-form').serialize(),
+                    success: function (res) {
+                        layer.close(load);
+                        that.attr('disabled', false)
+                        res.code == 1 ? $.show_success(res.msg, res.url) : $.show_error(res.msg);
+                    }
+                })
+            })
+        });
+
+        var url = "{:url('goods/delete')}";
+        $('.item-delete').delete('goods_id', url);
+
+        $('.addGoodsCo').on('click', function () {
+            let goods_id = $(this).data('id');
+            if (goods_id == '')
+                return false;
+            $.ajax({
+                type: 'post',
+                url: '{:url("goods/addByGoodsId")}',
+                data: {goods_id: goods_id},
+                success: function (res) {
+                    res.code == 1 ? $.show_success(res.msg, res.url) : $.show_error(res.msg);
+                }
+            })
+        })
+    });
+</script>
+

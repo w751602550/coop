@@ -1,0 +1,92 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a >修改密码</a></li>
+    </ul>
+</div>
+
+<div class="dsm-user-profile">
+    <div class="dsm-default-form fr">
+        <form method="post" id="profile_form"  novalidate="novalidate">
+            <input type="hidden" name="old_member_avatar" value="">
+            <dl>
+                <dt>用户名称：</dt>
+                <dd>
+                    <span class="w400">{$member.member.member_name}</span>
+                </dd>
+            </dl>
+			 <input type="hidden" name="member[name]" value="{$member.member.member_name}">
+            <dl>
+                <dt>原密码：</dt>
+                <dd>
+                   <input type="password"  maxlength="20" name="member[pwd]" value="">
+                </dd>
+            </dl>
+           <dl>
+                <dt>新密码：</dt>
+                <dd>
+                   <input type="password" id='repwd' maxlength="20" name="member[newpwd]" value="">
+                </dd>
+            </dl>
+             <dl>
+                <dt>确认密码：</dt>
+                <dd>
+                   <input type="password"  maxlength="20" name="member[renewpwd]" value="">
+                </dd>
+            </dl>
+  
+            <dl class="bottom">
+                <dt></dt>
+                <dd>
+                    <input type="submit" class="submit" value="保存修改">
+                </dd>
+            </dl>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    //注册表单验证
+    $(function () {
+       
+        $('#profile_form').validate({
+           
+			submitHandler: function (form) {
+                ajaxpost('profile_form');
+            },
+            onkeyup: false,
+            rules: {
+                'member[pwd]': {
+					required: true,
+                    minlength: 5,
+                    maxlength: 12
+                },
+				 'member[newpwd]': {             
+					required: true,
+                    minlength: 5,
+                    maxlength: 12
+                },
+				'member[renewpwd]': {             
+					 required: true,
+					 equalTo: "#repwd"
+                }
+            },
+            messages: {
+               'member[pwd]': {
+				    required:  "<i class='iconfont'>&#xe64c;</i>原密码不能为空",
+                    minlength: "<i class='iconfont'>&#xe64c;</i>密码长度大于等于5位小于等于12位",
+                    maxlength: "<i class='iconfont'>&#xe64c;</i>密码长度大于等于5位小于等于12位"
+                },
+               'member[newpwd]': {
+				    required:	"<i class='iconfont'>&#xe64c;</i>新密码不能为空",
+                    minlength: "<i class='iconfont'>&#xe64c;</i>密码长度大于等于5位小于等于12位",
+                    maxlength: "<i class='iconfont'>&#xe64c;</i>密码长度大于等于5位小于等于12位"
+                },
+				'member[renewpwd]': " <i class='iconfont'>&#xe64c;</i>两次密码不一致",
+                
+            }
+        });
+    });
+</script>
+
+{/block}

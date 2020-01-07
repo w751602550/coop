@@ -1,0 +1,194 @@
+<section class="head-slider default parallax" id="index-slider">
+    {:getAdv(3)}
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</section>
+<section class="roll-row roll-feature-project" id="index-portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 span12">
+                <div class="project-title">
+                    <h2 class="name" style='text-align:left'><a href="{:url('goods/index')}" style='font-weight:bolder'>热销爆款</a></h2>
+                </div>
+            </div>
+            <div class="col-sm-12 portfolio third-text" style='overflow:hidden'>
+                <div class="blog-container">
+                    {if !$goods->isEmpty()}
+                    {volist name='goods' id='vo' length='4'}
+                    <div class="span3 iport-item">
+                        <div class="items" style="display: flex;justify-content: center;align-items: center">
+
+                            <div class="image">   <div class="overlay"></div>
+                                <img src="{:getImageUrl($vo.thumb)}" alt="{$vo.goods_name}"/></div>
+                            <a href="{:url('goods/index',['goods_id'=>$vo.goods_id])}" class="read-more">查看详细</a>
+                        </div>
+                        <h5 class="title">
+                            <a href="{:url('goods/index',['goods_id'=>$vo.goods_id])}" title="{$vo.goods_name}">
+                                {$vo.goods_name}
+                            </a>
+                        </h5>
+                        <!--  <h6 class="sub-title"><a href="{:url('goods/index',['category_id'=>$vo.category.category_id])}">{$vo.category.name}</a> </h6>-->
+                    </div>
+                    {/volist}
+                    {/if}
+                </div>
+            </div>
+             <style>
+                  .index-category-product{}
+                  .index-category-product ul {display:flex;align-items:center;justify-content:space-evenly}
+                  .index-category-product ul li{line-height:2em;font-size:1.5em;}
+                  .index-category-product ul li a{}
+                  .index-product{}
+                  .index-product .index-product-left{}
+                  .index-product .index-product-left .product-left-item{}
+                  .index-product .index-product-right {}
+                  .index-product .index-product-right .product-right-item{}
+              </style>
+              <div class="col-sm-12 index-category-product">
+                  <ul>
+                      {volist name='categoryGoods' id='category'}
+                      <li data-category-id="{$category.category_id}"><a href="{:url('goods/index',['category_id'=>$category.category_id])}" title="{$category.name}">{$category.name}</a></li>
+                      {/volist}
+                  </ul>
+              </div>
+
+        </div>
+    </div>
+</section>
+<section>
+<div class='row'>
+	<div class='container'>
+        {if !$goods->isEmpty()}
+            <div class="index-product" class="product-cateogry-{$category.category_id}">
+                <div class="col-sm-4 index-product-left" >
+                    {volist name='category.goods' id='goods' length='2'}
+                    <div class="col-sm-12 product-left-item">
+                        <img src="{$goods.images[0]['file_path']}" alt="">
+                        <div>
+                            <h2>{$goods.goods_name}</h2>
+                            <span>{$goods.category.name}</span>
+                        </div>
+                    </div>
+                    {/volist}
+                </div>
+                <div class="col-sm-8 index-product-right">
+                    {volist name='category.goods' id='goods' length='11'}
+                    {if $i>2}
+                    <div class="col-sm-4 product-right-item">
+                        <img src="{$goods.images[0].file_path}" alt="">
+                        <a href="" title="">{$goods.goods_name}</a>
+                    </div>
+                    {/if}
+                    {/volist}
+                </div>
+            </div>
+        {/if}
+	</div>
+</div>
+</section>
+<section class="roll-row roll-stats video-bg parallax roll-animation" data-portfolio-effect="fadeInDown"
+         data-animation-delay="0" data-animation-offset="75%" id="index-parallax">
+    <div class="stats-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="stats-head">
+                    <h2 class="title">科技创新，诚信为本，互赢互利，共同发展</h2>
+                    <p class="stats-desc">
+                        公司致力于建立“诚信，勤学，互助，创新，进步，分享”的企业文化，全面提升员工素质和企业形象，增强员工和企业的责任感和使命感，将员工的人生观、价值观和企业的核心价值观合二为一，共同分享企业发展的成果。
+                    </p>
+                </div>
+            </div>
+            <div class="span3 fact-item">
+                <div class="roll-stats-count">
+                    <div class="icon">
+                        <div class="icon-overlay"></div>
+                        <img src="/static/web/images/controller_1.png" alt="image"></div>
+                    <h2 class="number" data-to="16" data-speed="3000">8000</h2>
+                    <span class="content">工厂面积</span></div>
+            </div>
+            <div class="span3 fact-item">
+                <div class="roll-stats-count">
+                    <div class="icon">
+                        <div class="icon-overlay"></div>
+                        <img src="/static/web/images/monitor_1.png" alt="image"></div>
+                    <h2 class="number" data-to="6" data-speed="3000" >18</h2>
+                    <span class="content" >产品品种</span></div>
+            </div>
+            <div class="span3 fact-item">
+                <div class="roll-stats-count">
+                    <div class="icon">
+                        <div class="icon-overlay"></div>
+                        <img src="/static/web/images/following_1.png" alt="image"></div>
+                    <h2 class="number" data-to="6" data-speed="3000" >660</h2>
+                    <span class="content" >库存</span></div>
+            </div>
+            <div class="span3 fact-item">
+                <div class="roll-stats-count">
+                    <div class="icon">
+                        <div class="icon-overlay"></div>
+                        <img src="/static/web/images/smile_1.png" alt="image"></div>
+                    <h2 class="number" data-to="52" data-speed="3000">662</h2>
+                    <span class="content" >服务客户</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="roll-row roll-ourteam" id="index-news">
+    <div class="container">
+        <h3 class="c-title"><a href="http://demoall.zancms.com/16511/a/news/">新闻资讯</a></h3>
+        <div class="row">
+            <div class="details">
+                {if !$article->isEmpty()}
+                {volist name='article' id='vo' length='4'}
+                <div class="span3 team inews-item">
+                    <a href="{:url('articl/index',['article_id'=>$vo.article_id])}" class="thumb-link">
+                        <img src="{:getImageUrl($vo.image_id)}" alt="{$vo.article_title}"/>
+                    </a>
+                    <h5 class="name">
+                        <a href="{:url('articl/index',['article_id'=>$vo.article_id])}"
+                           title="{$vo.article_title}">
+                            {$vo.article_title}
+                        </a>
+                    </h5>
+                    <h6 class="regency inews-date"><i class="fa fa-calendar"></i> &nbsp;{$vo.create_time}}</h6>
+                    <p class="desc">
+                        {:subContent($vo.content,100)}
+                    </p>
+                </div>
+                {/volist}
+                {/if}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="roll-row roll-aboutus landing" id="index-about">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="about-title">
+                    <h2 class="title"><a href="{:url('site/index',['key'=>'intro'])}">{$about.title}</a></h2>
+                    <div class="iabout">
+                        <p>
+                            {:subContent($about.content,8000)}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="offset1x span12">
+                <div class="purchase-box">
+                    <div class="detail">
+                        <h3>{$about.describe}</h3>
+                        <a href="{:url('site/index',['key'=>'intro'])}" class="read-more">了解我们</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,//可选选项，自动滑动
+        prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next',
+    })
+</script>

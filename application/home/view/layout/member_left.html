@@ -1,0 +1,23 @@
+<div class="left-layout">
+    <div class="dsm-sidebar">
+        {volist name='menu' id='vo'}
+        <div class="dl">
+            <div class="dt">
+                <h3 key="{$vo.name}"><i class="iconfont">{$vo.icon|raw}</i>{$vo.text}</h3>
+            </div>
+            <div class="dd">
+                <ul>
+                    {volist name='vo.submenu' id='second'}
+                    <li class="{if toUnderScore($second.url)== $rount_uri}selected{/if}">
+                        <a href="{:url($second.url)}">
+                     {$second.text}
+                    </a>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+        {/volist}
+
+    </div>
+</div>

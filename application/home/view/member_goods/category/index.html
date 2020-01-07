@@ -1,0 +1,128 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<link rel="stylesheet" href="/static/plugins/nestable/nestable.css">
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="{:url('memberGoods.category/index')}">商品分类</a></li>
+        <li><a href="{:url('memberGoods.category/add')}">添加分类</a></li>
+        <li><a href="{:url('memberGoods.category/addAll')}">批量添加分类</a></li>
+    </ul>
+</div>
+<div class="alert alert-block">
+    <ul>
+        <li>商品分类最多三级</li>
+    </ul>
+</div>
+<style>
+    .dd-handle {
+        display: none;
+    }
+</style>
+<div>
+    <a href="javascript:" class="dsm dsm-btn collapse">折叠所有</a>
+</div>
+<div class="dd ">
+    <ol class="dd-list ">
+        {if $list}
+        {volist name='list' id='vo'}
+        <li class="dd-item " data-id="{$vo.category_id}">
+            <div class="dd-handle "></div>
+            <div class="dd-menu">[id:{$vo.category_id}] {$vo.name}
+                <span class="abs-right">
+                         <div class="tpl-table-black-operation">
+                               <a href="{:url('memberGoods.category/add',['category_id'=>$vo.category_id])}"
+                                  class='tpl-table-black-operation-green'>
+                    新增下级
+                </a>
+                            <a href="{:url('memberGoods.category/edit',['category_id'=>$vo.category_id])}">
+                                <i class="icon iconfont">&#xe672;</i> 编辑
+                            </a>
+                            <a href="javascript:;" class="item-delete tpl-table-black-operation-del"
+                               data-id="{$vo.category_id}">
+                                <i class="icon iconfont">&#xe725;</i>删除
+                            </a>
+                        </div>
+                </span>
+            </div>
+            {if (isset($vo.child))}
+            <ol class="dd-list ">
+                {volist name='vo.child' id='second'}
+                <li class="dd-item " data-id="{$second.category_id}">
+                    <div class="dd-handle "></div>
+                    <div class="dd-menu">[id:{$second.category_id}] {$second.name}
+                        <span class="abs-right">
+                                                     <div class="tpl-table-black-operation">
+                                                          <a href="{:url('memberGoods.category/add',['category_id'=>$second.category_id])}"
+                                                             class='tpl-table-black-operation-green'>
+                                                新增下级
+                                            </a>
+                                                        <a href="{:url('memberGoods.category/edit',['category_id'=>$second.category_id])}">
+                                                            <i class="icon iconfont">&#xe672;</i>编辑
+                                                        </a>
+                                                        <a href="javascript:;"
+                                                           class="item-delete tpl-table-black-operation-del"
+                                                           data-id="{$second.category_id}">
+                                                            <i class="icon iconfont">&#xe725;</i>删除
+                                                        </a>
+                                                    </div>
+                                            </span>
+                    </div>
+                    {if (isset($second.child))}
+                    <ol class="dd-list ">
+                        {volist name='second.child' id='third'}
+                        <li class="dd-item " data-id="{$third.category_id}">
+                            <div class="dd-handle "></div>
+                            <div class="dd-menu">[id:{$third.category_id}] {$third.name}
+                                <span class="abs-right">
+                                                     <div class="tpl-table-black-operation">
+                                                           <a href="{:url('memberGoods.category/addGoods',['category_id'=>$third.category_id])}"
+                                                              class="tpl-table-black-operation-default">
+                                                           <i class="icon iconfont">&#xe641;</i>添加商品
+                                                        </a>
+                                                        <a href="{:url('memberGoods.category/edit',['category_id'=>$third.category_id])}">
+                                                           <i class="icon iconfont">&#xe672;</i>编辑
+                                                        </a>
+                                                        <a href="javascript:;"
+                                                           class="item-delete tpl-table-black-operation-del"
+                                                           data-id="{$third.category_id}">
+                                                            <i class="icon iconfont">&#xe725;</i>删除
+                                                        </a>
+                                                    </div>
+                                                 </span>
+                            </div>
+                        </li>
+                        {/volist}
+                    </ol>
+                    {/if}
+                </li>
+                {/volist}
+            </ol>
+            {/if}
+        </li>
+        {/volist}
+        {/if}
+    </ol>
+</div>
+<script src="/static/plugins/nestable/jquery.nestable.js"></script>
+<script>
+    $(function () {
+        $('.item-delete').delete('category_id', "{:url('memberGoods.category/delete')}", '删除后不可恢复，确定要删除吗？');
+        $('a')[0].addEventListener("click", function (e) {
+            e.preventDefault()
+        });
+        $('.dd').nestable('collapseAll');
+        var expand = true;
+        $('.collapse').click(function () {
+            if (expand) {
+                expand = false;
+                $('.dd').nestable('collapseAll');
+                $(this).html('展开所有');
+            } else {
+                expand = true;
+                $('.dd').nestable('expandAll');
+                $(this).html('折叠所有');
+            }
+        });
+    });
+</script>
+{/block}

@@ -1,0 +1,56 @@
+<div class="dsm-default-form fl" style="width: 100%;">
+    <form method="POST" id="goods-edit">
+        <input type="hidden" name="goods[member_goods_id]" value="{$goods.member_goods_id}">
+        <div id="vat_invoice_panel" class="dsc-form-default">
+            <dl>
+                <dt><i class="required">*</i>商品名称</dt>
+                <dd>
+                    <input type="text" class="text w400" name="goods[name]" value="{$goods.name}" required>
+                </dd>
+            </dl>
+            <dl>
+                <dt>合约价</dt>
+                <dd>
+                    {$goods.price}
+                </dd>
+            </dl>
+            <dl>
+                <dt>分类名称</dt>
+                <dd>
+                    <select name="goods[category_id]" class="text w400">
+                        <option value="0">顶级分类</option>
+                        {if $categoryList}
+                        {volist name='categoryList' id='vo'}
+                        <option value="{$vo.category_id}" disabled {if $vo.category_id == $goods.category_id}selected{/if} >{$vo.name}</option>
+                        {present name='vo.child'}
+                        {volist name='vo.child' id='sub'}
+                        <option value="{$vo.category_id}-{$sub.category_id}"  disabled {if $sub.category_id ==  $goods.category_id}selected{/if}>|----{$sub.name}</option>
+                        {present name='sub.child'}
+                        {volist name='sub.child' id='third'}
+                        <option value="{$vo.category_id}-{$sub.category_id}-{$third.category_id}"  {if $third.category_id ==  $goods.category_id}selected{/if}>|----|----{$third.name}</option>
+                        {/volist}
+                        {/present}
+                        {/volist}
+                        {/present}
+                        {/volist}
+                        {/if}
+                    </select>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>自定义编码</dt>
+                <dd>
+                    <input type="text" class="text w400" name="goods[goods_code]" value="{$goods.goods_code}">
+                </dd>
+            </dl>
+            <dl>
+                <dt>商品图</dt>
+                <dd>
+                    <img src="{$goods.thumb}" alt="" class="w200">
+                </dd>
+            </dl>
+
+        </div>
+    </form>
+</div>

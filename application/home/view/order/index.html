@@ -1,0 +1,186 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="{:url('order/index')}">订单列表</a></li>
+    </ul>
+</div>
+<form method="post">
+    <table class="dsm-search-table">
+        <tbody>
+        <tr>
+            <td>&nbsp;</td>
+            <th>订单状态</th>
+            <td class="w100">
+                <select name="search[status]">
+                    <option value="" selected>所有订单</option>
+                    {volist name='status' id='vo'}
+                    <option value="{$key}" {if $search_status == $key}selected{/if}>{$vo}</option>
+                    {/volist}
+                </select>
+            </td>
+            <th>下单时间</th>
+            <td class="w240">
+                <input type="text" class="text w70" name="search[start_time]" id="query_start_date" value="{:isset($search['start_time'])?$search['start_time']:''}"/>
+                <label class="add-on"><i class="iconfont">&#xe8d6;</i></label>&nbsp;&#8211;&nbsp;
+                <input type="text" class="text w70" name="search[end_time]" id="query_end_date" value="{:isset($search['end_time'])?$search['end_time']:''}"/>
+                <label class="add-on"><i class="iconfont">&#xe8d6;</i></label>
+            </td>
+            <th>订单号</th>
+            <td class="w160"><input type="text" class="text w150" name="search[order_sn]" value="{:isset($search['order_sn'])?$search['order_sn']:''}"></td>
+            <td class="w70 tc">
+                <input type="submit" class="submit" value="搜索">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<form action="{:url('order/combine')}" method="post" class="combine-order">
+    <table class="dsm-default-table order">
+        <thead>
+        <tr>
+            <th colspan="2">
+               <input type="checkbox" class="checkAll" style="margin"/>
+                <a href="javascript:" class="dsm-btn combine">合并结算</a>
+            </th>
+            <th>  商品</th>
+            <th class="w100">单价（元）</th>
+            <th class="w40">数量</th>
+            <th class="w100">小计(元)</th>
+            <th class="w120">订单金额</th>
+            <th class="w120">收件人</th>
+            <th class="w100">交易状态</th>
+            <th class="w150">交易操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {if !$list->isEmpty()}
+        {volist name='list' id='order'}
+        <tr>
+            <td colspan="19" class="sep-row"></td>
+        </tr>
+        <tr>
+            <th colspan="19">
+                <span class="ml10"> {if $order.status.value ==15 && $order.payment_type == 'online'}
+                <input type="checkbox" name="order[]" class="goodsSn" value="{$order.order_id}"/>{/if}
+                    订单号：{$order.order_sn}</span>
+                <span>支付单号：{$order.payment_sn?:''}</span>
+                <span>下单时间：{$order.create_time}</span>
+                <span></span>
+            </th>
+        </tr>
+        {if !$order.goods->isEmpty()}
+        {volist name='order.goods' id='goods'}
+        <tr>
+            <td class="bdl"></td>
+            <td class="w70" style="float: right" colspan="2">
+                <div class="dsm-goods-thumb">
+                    <a href="javascrip:" target="_blank">
+                        <img src="{$goods.goods_image}">
+                    </a></div>
+            </td>
+            <td class="tl">
+                <dl class="goods-name">
+                    <dt><a href="javascript:" target="_blank">{$goods.goods_name}</a></dt>
+                </dl>
+            </td>
+            <td>{$goods.price}</td>
+            <td>{$goods.number}</td>
+            <td>{$goods.total_price}</td>
+            {if $i==1}
+            <td class="bdl" rowspan="{:count($order.goods)}">
+                <p class=""><strong>{$order.total_price}</strong></p>
+                <p class="goods-freight">（免运费）</p>
+                {if $order.payment_type == 'month'}
+                <p title="支付方式：月结">月结支付</p></td>
+            {elseif $order.payment_type == 'online' /}
+            <p title="支付方式：在线支付">在线支付</p></td>
+            {/if}
+            <td class="bdl bdr" rowspan="{:count($order.goods)}">
+                {$order.address.name}<br>
+                -<br>
+                {$order.address.address}
+            </td>
+            <td class="bdl" rowspan="{:count($order.goods)}">
+                <p><span style="color:#F30">{$order.status.text}</span></p>
+                <!--                <p>-->
+                <!--                    <a href="" target="_blank">订单详情</a>-->
+                <!--                </p>-->
+            </td>
+            <td class="bdl bdr" rowspan="{:count($order.goods)}">
+                <p>
+                    {switch $order.status.value}
+                    {case 10}
+                    <a href="{:url('order/confirm',['order_id'=>$order.order_id])}" class="dsm-btn"
+                       data-id="{$order.order_id}">
+                        <i class="iconfont"></i>审核订单</a>
+                    {/case}
+                    {case 15}
+                    <a href="{:url('order/pay',['order_id'=>$order.order_id])}" class="dsm-btn dsm-btn-orange"
+                       data-id="{$order.order_id}">
+                        <i class="iconfont"></i>立即付款</a>
+                    {/case}
+                    {/switch}
+
+                </p>
+            </td>
+            {/if}
+        </tr>
+        {/volist}
+        {/if}
+        {/volist}
+        {/if}
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="19">
+                <div class="pagination">{$list->render()|raw}</div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('.checkAll').on('click', function () {
+            let type = $(this).prop('checked');
+            $('input.goodsSn').prop('checked', type);
+        });
+        $('input.goodsSn').on('click', function () {
+            if ($(this).prop('checked') == false)
+                $('.checkAll').prop('checked', false);
+        });
+        $('.combine').on('click', function () {
+            let num = $('input.goodsSn:checked').length;
+            if (!num) {
+                show_error('请勾选需合并的订单');
+                return false;
+            }
+            layer.confirm('是否确认合并结算订单', function (index) {
+                $('.combine-order').submit();
+            })
+        })
+        $('#query_start_date').datepicker({dateFormat: 'yy-mm-dd'});
+        $('#query_end_date').datepicker({dateFormat: 'yy-mm-dd'});
+        $('.comfirmOrder').on('click', function () {
+            let orderid = $(this).data('id');
+            layer.confirm('是否确认该订单', function (index) {
+                let load = layer.load()
+                $.ajax({
+                    type: 'post',
+                    url: "{:url('order/confirm')}",
+                    data: {order_id: orderid},
+                    success: function (res) {
+                        res.code == 1 ? $.show_success(res.msg, res.url) : $.show_error(res.msg);
+                        layer.close(load);
+                    }
+                })
+            })
+        })
+    });
+</script>
+
+
+{/block}
