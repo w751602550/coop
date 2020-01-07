@@ -4,7 +4,7 @@ return [
         // 数据库类型
         'type'        => 'mysql',
         // 服务器地址
-        'hostname'    => 'localhost',
+        'hostname'    => '113.105.191.213',
         // 数据库名
         'database'    => '360gh',
         // 数据库用户名

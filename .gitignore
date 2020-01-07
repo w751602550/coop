@@ -3,3 +3,8 @@
 /runtime
 *.log
 .DS_Store
+y
+y.pub
+/application/store/config/database.php
+/config/database.php
+
