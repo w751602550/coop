@@ -108,6 +108,7 @@ class Member extends BaseModel
             'member' => [
                 'member_id' => $member['member_id'],
                 'member_name' => $member['member_name'],
+                'store_id'=>$member['store_id'],
             ],
             'is_login' => 'true'
         ];

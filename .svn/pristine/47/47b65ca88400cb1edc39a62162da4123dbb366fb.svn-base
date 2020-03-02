@@ -1,0 +1,159 @@
+---------------------------------------------------------------
+
+[2019-12-04T00:41:23+08:00] 123.125.71.115 GET coop.360gh.com/
+[运行时间：0.041567s] [吞吐率：24.06req/s] [内存消耗：725.60kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-12-04T00:41:23+08:00] 123.125.71.29 GET coop.360gh.com/home/member/login.html
+[运行时间：0.039958s] [吞吐率：25.03req/s] [内存消耗：739.95kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'cookie' => 'PHPSESSID=k81en94onrqarab37gjp7lfa91;',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-12-04T07:05:25+08:00] 123.125.71.72 GET coop.360gh.com/
+[运行时间：0.042817s] [吞吐率：23.36req/s] [内存消耗：725.61kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-12-04T07:05:25+08:00] 123.125.71.95 GET coop.360gh.com/home/member/login.html
+[运行时间：0.043953s] [吞吐率：22.75req/s] [内存消耗：739.95kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'cookie' => 'PHPSESSID=1t09jgsq6qvvtk1fr1m7l9mj67;',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-12-04T07:09:15+08:00] 167.172.28.77 GET coop.360gh.com/
+[运行时间：0.041134s] [吞吐率：24.31req/s] [内存消耗：726.04kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'accept-charset' => 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
+  'user-agent' => 'Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)',
+  'accept-encoding' => 'identity',
+  'accept' => 'text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5',
+  'accept-language' => 'en-gb,en;q=0.5',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-12-04T07:09:18+08:00] 167.172.28.77 GET coop.360gh.com/home/member/login.html
+[运行时间：0.037014s] [吞吐率：27.02req/s] [内存消耗：740.27kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'accept-charset' => 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
+  'user-agent' => 'Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)',
+  'accept-encoding' => 'identity',
+  'accept' => 'text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5',
+  'accept-language' => 'en-gb,en;q=0.5',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-12-04T09:39:59+08:00] 220.181.51.69 GET coop.360gh.com/
+[运行时间：0.099448s] [吞吐率：10.06req/s] [内存消耗：739.13kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-12-04T09:39:59+08:00] 220.181.51.73 GET coop.360gh.com/home/member/login.html
+[运行时间：0.042063s] [吞吐率：23.77req/s] [内存消耗：743.34kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'cookie' => 'PHPSESSID=s0auaplsle94p790oa5bcpejh3;',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]

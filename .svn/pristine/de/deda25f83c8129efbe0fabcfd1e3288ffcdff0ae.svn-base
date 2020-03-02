@@ -1,0 +1,55 @@
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-cf">已关闭订单列表
+						<span class="am-badge am-badge-primary am-radius">{$order->total()}</span>
+					</div>
+                </div>
+                <div class="widget-body am-fr">
+                    <div class="page_toolbar am-margin-bottom-xs am-cf">
+                        <form class="toolbar-form" action="" method="get">
+                            <div class="am-u-sm-12 am-u-md-3">
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-9">
+                                <div class="am fr">
+                                    <div class="am-form-group am-fl">
+                                     
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                      
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form">
+                                           <input type="text" class="am-form-field" name="order_sn"
+                                                   placeholder="请输入订单号"
+                                                   value="{$request->get('order_sn')|raw}">
+                                            <div class="am-input-group-btn">
+                                                <button class="am-btn am-btn-default am-icon-search"
+                                                        type="submit"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+				 {include file='order/table'}	
+                    <div class="am-u-lg-12 am-cf text-center">
+                        <div class="am-fr">{$order->render()|raw}</div>
+                        <div class="am-fr pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总记录：{$order->total()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+
+    });
+</script>
+

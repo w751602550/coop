@@ -1,0 +1,297 @@
+---------------------------------------------------------------
+
+[2019-11-18T04:15:18+08:00] 203.208.60.41 GET coop.360gh.com/
+[运行时间：0.041851s] [吞吐率：23.89req/s] [内存消耗：726.80kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-18T04:15:20+08:00] 203.208.60.55 GET coop.360gh.com/home/member/login.html
+[运行时间：0.042244s] [吞吐率：23.67req/s] [内存消耗：741.15kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'cookie' => 'PHPSESSID=97vi666rm4f7sgmag65i1sfp14',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-11-18T06:36:39+08:00] 203.208.60.0 GET coop.360gh.com/
+[运行时间：0.041895s] [吞吐率：23.87req/s] [内存消耗：725.61kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-18T06:36:47+08:00] 203.208.60.24 GET coop.360gh.com/home/member/login.html
+[运行时间：0.040135s] [吞吐率：24.92req/s] [内存消耗：739.91kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'cookie' => 'PHPSESSID=p8dss7873hb941jas58l0pg8n1',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-11-18T10:53:16+08:00] 46.229.168.154 GET coop.360gh.com/
+[运行时间：0.041907s] [吞吐率：23.86req/s] [内存消耗：725.33kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'accept' => 'text/html, application/rss+xml, application/atom+xml, text/xml, text/rss+xml',
+  'accept-encoding' => 'gzip,deflate',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; SemrushBot/6~bl; +http://www.semrush.com/bot.html)',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-18T10:53:17+08:00] 46.229.168.144 GET coop.360gh.com/home/member/login.html
+[运行时间：0.039850s] [吞吐率：25.09req/s] [内存消耗：739.55kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'accept' => 'text/html, application/rss+xml, application/atom+xml, text/xml, text/rss+xml',
+  'accept-encoding' => 'gzip,deflate',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; SemrushBot/6~bl; +http://www.semrush.com/bot.html)',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-11-18T13:39:09+08:00] 203.208.60.8 GET coop.360gh.com/
+[运行时间：0.048799s] [吞吐率：20.49req/s] [内存消耗：726.52kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-18T13:39:35+08:00] 203.208.60.48 GET coop.360gh.com/home/member/login.html
+[运行时间：0.038374s] [吞吐率：26.06req/s] [内存消耗：740.88kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'cookie' => 'PHPSESSID=cejpiuh1scebnd612t1u0n3m14',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-11-18T13:40:15+08:00] 203.208.60.34 GET coop.360gh.com/static/home/
+[运行时间：0.036223s] [吞吐率：27.61req/s] [内存消耗：531.47kb] [文件加载：110]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+---------------------------------------------------------------
+
+[2019-11-18T13:41:18+08:00] 203.208.60.32 GET coop.360gh.com/
+[运行时间：0.039314s] [吞吐率：25.44req/s] [内存消耗：726.80kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-18T13:41:47+08:00] 203.208.60.30 GET coop.360gh.com/home/member/login.html
+[运行时间：0.048215s] [吞吐率：20.74req/s] [内存消耗：741.15kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'cookie' => 'PHPSESSID=l79vi3jo843ig1kqcc60ohusr0',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-11-18T13:43:41+08:00] 203.208.60.89 GET coop.360gh.com/home/member/forget.html
+[运行时间：0.037964s] [吞吐率：26.34req/s] [内存消耗：728.04kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/forget_html' => '',
+)
+---------------------------------------------------------------
+
+[2019-11-18T13:43:42+08:00] 203.208.60.41 GET coop.360gh.com/home/member/login.html
+[运行时间：0.042066s] [吞吐率：23.77req/s] [内存消耗：740.88kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'cookie' => 'PHPSESSID=3q63sknea04eott74opa64bar7',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-11-18T13:46:59+08:00] 203.208.60.41 GET coop.360gh.com/home/captcha/check/reset/false.html
+[运行时间：0.039761s] [吞吐率：25.15req/s] [内存消耗：672.98kb] [文件加载：122]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/captcha/check/reset/false_html' => '',
+  'reset' => 'false',
+)
+---------------------------------------------------------------
+
+[2019-11-18T15:28:12+08:00] 203.208.60.69 GET coop.360gh.com/
+[运行时间：0.040855s] [吞吐率：24.48req/s] [内存消耗：725.61kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-18T15:28:13+08:00] 203.208.60.77 GET coop.360gh.com/home/member/login.html
+[运行时间：0.034773s] [吞吐率：28.76req/s] [内存消耗：739.91kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'cookie' => 'PHPSESSID=iobtjp2pi3snc0e4hb3pmq34c1',
+  'connection' => 'keep-alive',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'from' => 'googlebot(at)googlebot.com',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'accept-encoding' => 'gzip,deflate,br',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]

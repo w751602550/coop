@@ -1,0 +1,115 @@
+{include file="layout/mall_top" /}
+<link rel="stylesheet" href="/static/home/css/home_cart.css">
+<script src="/static/plugins/mlselection.js"></script>
+
+
+<div class="dsc-header">
+    <div class="logo">
+        <a href="{:url('member/index')}">
+            <img src="http://www.360gh.com/data/upload/shop/common/05041196300000964.png">
+        </a>
+    </div>
+    <ul class="dsc-flow">
+        <li class="current"><i class="iconfont"></i>
+            <p>我的购物车</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class="current"><i class=" iconfont"></i>
+            <p>填写核对订单信息</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class="current"><i class="iconfont"></i>
+            <p>支付提交</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class=""><i class="iconfont"></i>
+            <p>订单完成</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+    </ul>
+</div>
+<form method="post" id="my-form" >
+    <input type="hidden" name="type" value="pay">
+    <div class="dsc-main">
+        <div class="dsc-title">
+            <h3>填写核对订单信息</h3>
+            <h5>请仔细核对订单信息</h5>
+        </div>
+
+        <div class="dsc-receipt-info">
+            <div class="dsc-receipt-info-title">
+                <h3>订单列表</h3>
+            </div>
+            <table class="dsc-table-style">
+                <thead>
+                <tr>
+                    <th class="w20"></th>
+                    <th>订单编号</th>
+                    <th class="w120">支付编号</th>
+                    <th class="w120">总价(元)</th>
+                    <th>下单时间</th>
+                    <th class="w120">付款金额(元)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {if !$orderList->isEmpty()}
+                {volist name='orderList' id='order'}
+                <tr id="cart_item_15" class="shop-list ">
+                    <td><input type="hidden" name="order[]" value="{$order.order_id}"></td>
+                    <td class="w60">
+                      {$order.order_sn}
+                    </td>
+                    <td class="w60">
+                       {$order.payment_sn}
+                    </td>
+                    <td class="w120"><em>{$order.total_price}</em></td>
+                    <td class="w60">{$order.create_time}</td>
+                    <td class="w120">
+                        <em id="item15_subtotal" ds_type="eachGoodsTotal">{$order.pay_price}</em>
+                    </td>
+                </tr>
+                {/volist}
+                {/if}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <div class="dsc-all-account">订单总金额：<em id="orderTotal">{$total}</em>元</div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="dsc-receipt-info">
+            <div class="dsc-receipt-info-title">
+                <h3>选择在线支付</h3>
+            </div>
+            <ul class="dsc-payment-list">
+                <li payment_code="unionpay" class="using">
+                    <label for="pay_unionpay">
+                        <i></i>
+                        <div class="logo" for="pay_unionpay">
+                            <img src="/static/home/images/payment/unionpay_logo.gif">
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="dsc-bottom tc mb50">
+            <a href="javascript:void(0);" id="next_button" class="dsc-btn dsc-btn-green">
+                <i class="iconfont"></i>确认提交支付</a>
+        </div>
+    </div>
+</form>
+<script>
+    $('#next_button').on('click',function(){
+        layer.confirm('是否确认提交支付',function(){
+            $('#my-form').submit();
+        })
+    })
+</script>
+{include file="layout/mall_footer" /}

@@ -1,0 +1,111 @@
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-cf">全部订单列表</div>
+                </div>
+                <div class="widget-body am-fr">
+                    <div class="page_toolbar am-margin-bottom-xs am-cf">
+                        <form class="toolbar-form" action="" method="get">
+                            <div class="am-u-sm-12 am-u-md-3">
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-9">
+                                <div class="am fr">
+                                    <div class="am-form-group am-fl">
+                                     
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                      
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form">
+                                            <input type="text" class="am-form-field" name="goods_name"
+                                                   placeholder="请输入商品名称"
+                                                   value="{$request->get('goods_name')|raw}">
+                                            <div class="am-input-group-btn">
+                                                <button class="am-btn am-btn-default am-icon-search"
+                                                        type="submit"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="am-scrollable-horizontal am-u-sm-12">
+                        <table width="100%" class="am-table am-table-compact am-table-striped
+                         tpl-table-black am-text-nowrap">
+                            <thead>
+                            <tr>
+                                <th>订单号</th>
+                                <th>总价</th>
+                                <th>付款方式</th>
+                                <th>订单时间</th>
+                                <th>付款单号</th>
+                                <th>订单状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                           
+                            {volist name='order' id='orders'}
+                            <tr>
+                                <td class="am-text-middle">{$orders.order_sn}</td>
+								<td class="am-text-middle">{$orders.total_price}</td>
+								<td class="am-text-middle">
+									{if condition="$orders.payment_type eq 'month'"}月结{else}
+										现结
+									{/if}
+								</td>
+                                <td class="am-text-middle">{$orders.create_time|date="Y-m-d H:i:s"}</td>
+							    <td class="am-text-middle">
+									{if condition="$orders.payment_sn eq '0'"}{else}
+										{$orders.payment_sn}
+									{/if}
+								</td>
+							    <td class="am-text-middle">	
+								{switch name="orders.status"}
+								    {case value="10"}待审核{/case}
+									{case value="15"}已审核{/case}
+								    {case value="20"}待发货{/case}
+									{case value="30"}已发货{/case}
+									{case value="40"}已送达{/case}
+									{case value="50"}已付款{/case}
+									{case value="60"}已完成{/case}
+									{case value="70"}已关闭{/case}
+								    {default /}default
+								{/switch}
+
+
+								</td>
+							    <td class="am-text-middle"> <a href="{:url('order/edit',['id'=>$orders.order_id])}" target="_blank" class="tpl-table-black-operation-green">
+                                            <i class="am-icon-pencil"></i> 
+                                        </a></td>
+                            </tr>
+                            {/volist}
+                            
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <div class="am-u-lg-12 am-cf text-center">
+                        <div class="am-fr">{$order->render()|raw}</div>
+                        <div class="am-fr pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总记录：{$order->total()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+
+    });
+</script>
+

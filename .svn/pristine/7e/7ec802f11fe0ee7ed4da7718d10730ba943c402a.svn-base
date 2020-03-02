@@ -1,0 +1,54 @@
+<?php /*a:1:{s:73:"/home/www/web/coop_360gh_com/application/home/view/member_goods/edit.html";i:1573778837;}*/ ?>
+<div class="dsm-default-form fl" style="width: 100%;">
+    <form method="POST" id="goods-edit">
+        <input type="hidden" name="goods[member_goods_id]" value="<?php echo htmlentities($goods['member_goods_id']); ?>">
+        <div id="vat_invoice_panel" class="dsc-form-default">
+            <dl>
+                <dt><i class="required">*</i>商品名称</dt>
+                <dd>
+                    <input type="text" class="text w400" name="goods[name]" value="<?php echo htmlentities($goods['name']); ?>" required>
+                </dd>
+            </dl>
+            <dl>
+                <dt>合约价</dt>
+                <dd>
+                    <?php echo htmlentities($goods['price']); ?>
+                </dd>
+            </dl>
+            <dl>
+                <dt>分类名称</dt>
+                <dd>
+                    <select name="goods[category_id]" class="text w400">
+                        <option value="0">顶级分类</option>
+                        <?php if($categoryList): if(is_array($categoryList) || $categoryList instanceof \think\Collection || $categoryList instanceof \think\Paginator): $i = 0; $__LIST__ = $categoryList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                        <option value="<?php echo htmlentities($vo['category_id']); ?>" disabled <?php if($vo['category_id'] == $goods['category_id']): ?>selected<?php endif; ?> ><?php echo htmlentities($vo['name']); ?></option>
+                        <?php if(isset($vo['child'])): if(is_array($vo['child']) || $vo['child'] instanceof \think\Collection || $vo['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub): $mod = ($i % 2 );++$i;?>
+                        <option value="<?php echo htmlentities($vo['category_id']); ?>-<?php echo htmlentities($sub['category_id']); ?>"  disabled <?php if($sub['category_id'] ==  $goods['category_id']): ?>selected<?php endif; ?>>|----<?php echo htmlentities($sub['name']); ?></option>
+                        <?php if(isset($sub['child'])): if(is_array($sub['child']) || $sub['child'] instanceof \think\Collection || $sub['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $sub['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$third): $mod = ($i % 2 );++$i;?>
+                        <option value="<?php echo htmlentities($vo['category_id']); ?>-<?php echo htmlentities($sub['category_id']); ?>-<?php echo htmlentities($third['category_id']); ?>"  <?php if($third['category_id'] ==  $goods['category_id']): ?>selected<?php endif; ?>>|----|----<?php echo htmlentities($third['name']); ?></option>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                        <?php endif; ?>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                        <?php endif; ?>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                        <?php endif; ?>
+                    </select>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>自定义编码</dt>
+                <dd>
+                    <input type="text" class="text w400" name="goods[goods_code]" value="<?php echo htmlentities($goods['goods_code']); ?>">
+                </dd>
+            </dl>
+            <dl>
+                <dt>商品图</dt>
+                <dd>
+                    <img src="<?php echo htmlentities($goods['thumb']); ?>" alt="" class="w200">
+                </dd>
+            </dl>
+
+        </div>
+    </form>
+</div>

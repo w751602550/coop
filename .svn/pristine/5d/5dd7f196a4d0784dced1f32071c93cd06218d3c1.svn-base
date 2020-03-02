@@ -1,0 +1,63 @@
+<?php
+
+
+namespace app\store\model;
+
+
+class Member extends Store
+{
+    protected $pk = 'member_id';
+
+    public function setPasswordAttr($value)
+    {
+        return pwd_hash($value);
+    }
+
+    public function getGenderAttr($value)
+    {
+        $gender = ['未知','女', '男'];
+        return ['text' => $gender[$value], 'value' => $value];
+    }
+
+    public function getPage()
+    {
+        return $this->paginate($this->psize);
+    }
+
+    public function checkName($value)
+    {
+        return self::useGlobalScope(false)->where('member_name', $value)->count();
+    }
+
+    public function add($post)
+    {
+        if ($this->checkName($post['member_name'])) {
+            $this->error = '用户名己存在，请重新输入';
+            return false;
+        }
+        if ($post['password'] !== $post['password_confirm']) {
+            $this->error = '密码不一致，请重新输入，注意大小写';
+            return false;
+        }
+        $post['password'] = $post['password'] ?: '123456';
+        $post['store_id'] = $this->store_id;
+        $post['true_name'] = $post['true_name'] ?: $post['member_name'];
+        return $this->allowField(true)->save($post);
+    }
+
+    public function edit($post)
+    {
+        if (!$post['password'])
+            unset($post['password']);
+        return $this->allowField(true)->save($post, $this->member_id);
+    }
+
+    public function detail($member_id)
+    {
+        return $this->get($member_id);
+    }
+
+    public function getIdByCon($condition=[]){
+        return $this->where($condition)->column('member_id');
+    }
+}

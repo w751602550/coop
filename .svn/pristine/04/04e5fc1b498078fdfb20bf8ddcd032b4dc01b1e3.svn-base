@@ -1,0 +1,198 @@
+<?php
+
+
+namespace app\store\controller;
+
+use app\store\model\Order as OrderModel;
+use app\store\model\Member;
+
+class Order extends Base
+{
+    protected $data = [
+        '10' => '待审核',
+        '15' => '待付款',
+        '18' => '待确认',
+        '20' => '待发货',
+        '30' => '己发货',
+        '40' => '己送达',
+        '50' => '己完成',
+        '60' => '己关闭',
+    ];
+
+    public function all_list($order_sn = '', $member_name = '', $status = '')
+    {
+        $condition = [];
+        $order_sn && $condition[] = ['order_sn', '=', trim($order_sn)];
+        $status && $condition[] = ['status', '=', intval($status)];
+        if (trim($member_name)) {
+            $member_name = '%' . str_replace(' ', '%', trim($member_name)) . '%';
+            $con[] = ['member_name', 'like', $member_name];
+            $memberIdArr = (new Member)->getIdByCon($con);
+            $condition[] = ['member_id', 'in', $memberIdArr];
+        }
+        $model = new OrderModel;
+        $list = $model->getPage($condition);
+        $status = $this->data;
+        return $this->fetch('index', compact('list', 'status'));
+    }
+
+    public function delivery_list($order_sn = '', $member_name = '')
+    {
+        return $this->all_list($order_sn, $member_name, 20);
+    }
+
+    public function receipt_list($order_sn = '', $member_name = '')
+    {
+        return $this->all_list($order_sn, $member_name, 40);
+    }
+
+    public function pay_list($order_sn = '', $member_name = '')
+    {
+        return $this->all_list($order_sn, $member_name, 15);
+    }
+
+    public function complete_list($order_sn = '', $member_name = '')
+    {
+        return $this->all_list($order_sn, $member_name, 50);
+    }
+
+    public function cancel_list($order_sn = '', $member_name = '')
+    {
+        return $this->all_list($order_sn, $member_name, 60);
+    }
+
+    public function edit($order_id)
+    {
+        $model = new OrderModel;
+        if ($this->ajax) {
+            $detail = OrderModel::getOne(['order_id' => $order_id]);
+            if (!$detail)
+                return ajaxError(getchina('noData'));
+            $post = postData('order');
+            if ($detail->edit(['status' => $post['status']]) !== false)
+                return ajaxSuccess(getchina('updateSuccess'));
+            return ajaxError(getchina('updateError'));
+        }
+        $order = $model->detail($order_id);
+        $status = $this->data;
+        return $this->fetch('edit', compact('status', 'order'));
+    }
+
+    public function delete($order_id)
+    {
+        $detail = OrderModel::getOne(['order_id' => $order_id]);
+        if ($detail['status'] < 30 || $detail['status'] == 60) {
+            if ($detail->setDelete($order_id)) {
+                return ajaxSuccess(getchina('deleteSuccess'));
+            }
+            return ajaxError(getchina('deleteError') . ":" . $detail->getError());
+        }
+        return ajaxError('删除订单失败，该订单己' . $this->data[$detail['status']]);
+    }
+
+    public function deleteAll()
+    {
+        if ($this->ajax) {
+            $order_id = postData('order_id');
+            if (!$order_id)
+                return ajaxError(getchina('deleteError'));
+            $errorArr = [];
+            foreach ($order_id as $v) {
+                $order = OrderModel::getOne(['order_id' => $v]);
+                if ($order['status'] < 30 || $order['status'] == 60) {
+                    if (!(new OrderModel)->setDelete($v)) {
+                        array_push($errorArr, ['order_sn' => $order['order_sn'], 'error' => $order->getError()]);
+                    } else {
+                        array_push($errorArr, ['order_sn' => $order['order_sn'], 'error' => getchina('deleteSuccess')]);
+                    }
+                } else {
+                    array_push($errorArr, ['order_sn' => $order['order_sn'], 'error' => '该订单己' . $this->data[$order['status']] . '，无法删除']);
+                }
+            }
+            if ($errorArr)
+                return ajaxError(getchina('deleteError'), '', $errorArr);
+            return ajaxSuccess(getchina('deleteSuccess'));
+        }
+    }
+
+    public function export($order_sn = '', $member_name = '', $status = '')
+    {
+        $condition = [];
+        $order_sn && $condition[] = ['order_sn', '=', trim($order_sn)];
+        $status && $condition[] = ['status', '=', intval($status)];
+        if (trim($member_name)) {
+            $member_name = '%' . str_replace(' ', '%', trim($member_name)) . '%';
+            $con[] = ['member_name', 'like', $member_name];
+            $memberIdArr = (new Member)->getIdByCon($con);
+            $condition[] = ['member_id', 'in', $memberIdArr];
+        }
+        $model = new OrderModel;
+        $list = $model->getAll($condition);
+        if (!$list)
+            return ajaxError(getchina('noData'));
+        $filename = '订单列表' . date('mdHis',time()) . '.xlsx';
+        $title = ['订单号', '客户名称', '联系电话', '联系地址', '付款方式', '总价', '订单状态', '下单时间', '发货时间', '完成时间'];
+        $data = [];
+        foreach ($list as $k => $v) {
+            $data[$k][] = ($v['order_sn']) . ' ';
+            $data[$k][] = $v['address']['name'];
+            $data[$k][] = $v['address']['phone'];
+            $data[$k][] = $v['address']['first_address'] . $v['address']['address'];
+            $data[$k][] = $v['payment_type_name'];
+            $data[$k][] = $v['total_price'];
+            $data[$k][] = $this->data[$v['status']];
+            $data[$k][] = $v['create_time'];
+            $data[$k][] = $v['delivery_time'] ?: '';
+            $data[$k][] = $v['complete_time'] ?: '';
+        }
+        return $this->exportExcel($filename, $title, $data);
+    }
+
+    public function exportOrder()
+    {
+        $order_id = postData('order_id');
+        if (!$order_id)
+            return ajaxError(getchina('deleteError'));
+        $con[] = ['order_id', 'in', $order_id];
+        $list = (new OrderModel)->getAll($con);
+        if (!$list)
+            return ajaxError(getchina('noData'));
+        $filename = '订单列表' . date('mdHis',time()) . '.xlsx';
+        $title = ['订单号', '客户名称', '联系电话', '联系地址', '付款方式', '总价', '订单状态', '下单时间', '发货时间', '完成时间'];
+        $data = [];
+        foreach ($list as $k => $v) {
+            $data[$k][] = ($v['order_sn']) . ' ';
+            $data[$k][] = $v['address']['name'];
+            $data[$k][] = $v['address']['phone'];
+            $data[$k][] = $v['address']['first_address'] . $v['address']['address'];
+            $data[$k][] = $v['payment_type_name'];
+            $data[$k][] = $v['total_price'];
+            $data[$k][] = $this->data[$v['status']];
+            $data[$k][] = $v['create_time'];
+            $data[$k][] = $v['delivery_time'] ?: '';
+            $data[$k][] = $v['complete_time'] ?: '';
+        }
+        return $this->exportExcel($filename, $title, $data);
+    }
+
+    protected function exportExcel($filename, $title, $data)
+    {
+        $objPHPExcel = new \PHPExcel();
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $sheet = $objPHPExcel->getActiveSheet();
+        $start = 'A';
+        foreach ($title as $key => $val) {
+            $sheet->setCellValue(chr(ord($start) + $key) . '1', $val);
+        }
+        foreach ($data as $key => $val) {
+            foreach ($title as $k => $v) {
+                $sheet->setCellValue(chr(ord($start) + $k) . ($key + 2), $val[$k]);
+            }
+        }
+        ob_end_clean();
+        header('pragma:public');
+        header("Content-Disposition:attachment;filename=" . $filename);
+        $objWriter->save('php://output');
+        exit;
+    }
+}

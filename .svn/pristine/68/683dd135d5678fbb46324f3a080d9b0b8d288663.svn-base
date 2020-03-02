@@ -1,0 +1,34 @@
+<?php
+	
+	namespace app\store\model;
+	
+	use think\Db;
+	
+	class Order extends Store{
+		
+		protected $table= 'order';
+		
+		public function orderlist()
+		{
+			
+			$result =Db($this->table)->paginate(25);
+			
+			return $result;
+		}
+		
+		public function orderinfo($id){
+		
+			$result =Db($this->table)->where('order_id',$id)->find();
+		
+			return $result;
+		}
+		
+		public function select($condition){
+			
+			$result =Db('order_goods')->where($condition)->select();
+		
+			return $result;
+			
+		}
+		
+	}

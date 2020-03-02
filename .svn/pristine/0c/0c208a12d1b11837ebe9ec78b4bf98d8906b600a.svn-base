@@ -1,0 +1,50 @@
+<div class="server">
+    <div class="ensure">
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+    </div>
+    <div class="mall_desc">
+        <dl>
+            <dt>帮助中心</dt>
+            <dd>
+                <a href="/home/article/show/article_id/6.html">如何注册成为会员</a>
+                <a href="/home/article/show/article_id/39.html">积分细则</a>
+                <a href="/home/article/show/article_id/8.html">忘记密码</a>
+                <a href="/home/article/show/article_id/10.html">查看已购买商品</a>
+                <a href="/home/article/show/article_id/7.html">如何搜索</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>店主之家</dt>
+            <dd>
+                <a href="/home/article/show/article_id/14.html">商城商品推荐</a>
+                <a href="/home/article/show/article_id/11.html">如何管理店铺</a>
+                <a href="/home/article/show/article_id/13.html">如何发货</a>
+                <a href="/home/article/show/article_id/15.html">如何申请开店</a>
+                <a href="/home/article/show/article_id/12.html">查看售出商品</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>支付方式</dt>
+            <dd>
+                <a href="/home/article/show/article_id/28.html">分期付款</a>
+                <a href="/home/article/show/article_id/16.html">如何注册支付宝</a>
+                <a href="/home/article/show/article_id/30.html">公司转账</a>
+                <a href="/home/article/show/article_id/29.html">邮局汇款</a>
+                <a href="/home/article/show/article_id/17.html">在线支付</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>售后服务</dt>
+            <dd>
+                <a href="/home/article/show/article_id/31.html">退换货政策</a>
+                <a href="/home/article/show/article_id/33.html">返修/退换货</a>
+                <a href="/home/article/show/article_id/26.html">联系卖家</a>
+                <a href="/home/article/show/article_id/32.html">退换货流程</a>
+                <a href="/home/article/show/article_id/34.html">退款申请</a>
+            </dd>
+        </dl>
+    </div>
+</div>

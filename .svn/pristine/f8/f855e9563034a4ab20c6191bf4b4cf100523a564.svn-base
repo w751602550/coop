@@ -1,0 +1,144 @@
+---------------------------------------------------------------
+
+[2019-10-28T13:27:05+08:00] 14.30.0.28 POST coop.360gh.com/home/member/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000311s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member` [ RunTime:0.003367s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member` WHERE  ( `member_name` = '东莞监狱' OR `phone` = '东莞监狱' ) LIMIT 1 [ RunTime:0.000536s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:27:17+08:00] 14.30.0.28 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.004162s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003654s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (12,13,10,11,8,9,6,7,3,4,1) [ RunTime:0.000626s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.003367s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_address` WHERE  `order_id` IN (12,13,10,11,8,9,6,7,3,4,1) [ RunTime:0.000446s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:37:15+08:00] 14.30.0.28 POST coop.360gh.com/home/order/importfile.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000362s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003901s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10060 LIMIT 1 [ RunTime:0.000452s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003421s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10060 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10049 LIMIT 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10049 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10054 LIMIT 1 [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10054 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10046 LIMIT 1 [ RunTime:0.000247s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10046 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10048 LIMIT 1 [ RunTime:0.000326s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10048 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10051 LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10051 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.002845s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order` (`member_id` , `order_sn` , `year` , `month` , `create_time` , `update_time`) VALUES (1 , '2019102898519751' , 2019 , 10 , 1572241035 , 1572241035) [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.002654s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (14 , 10060 , '上海药皂 125克 125g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247239341056929.jpg' , 3 , 3.29 , 9.87 , '') [ RunTime:0.000264s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (14 , 10049 , '川南麻辣萝卜干80g 保质期：15个月 80g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247330223920023.jpg' , 1 , 3.2 , 3.2 , '') [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.002645s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_address` (`order_id` , `member_id` , `name` , `first_address` , `address` , `code` , `phone` , `update_time`) VALUES (14 , 1 , '一监区' , '广东省-梅州市-梅江区-梅州三路66号' , '梅州市梅州三路66号一监区' , '510940' , '18816833761' , 1572241035) [ RunTime:0.000271s ]
+[ sql ] [ SQL ] UPDATE `bin_order`  SET `total_price` = 13.07 , `update_time` = 1572241035  WHERE  `order_id` = 14 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order` (`member_id` , `order_sn` , `year` , `month` , `create_time` , `update_time`) VALUES (1 , '2019102898511005' , 2019 , 10 , 1572241035 , 1572241035) [ RunTime:0.000186s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (15 , 10054 , '海天 特级金标生抽王 500ml 500ml' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247335635487250.jpg' , 2 , 11.5 , 23 , '') [ RunTime:0.000221s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (15 , 10046 , '乌江涪陵榨菜微辣 80G 保质期16个月 80g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247327307117035.jpg' , 5 , 3.3 , 16.5 , '') [ RunTime:0.000188s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_address` (`order_id` , `member_id` , `name` , `first_address` , `address` , `code` , `phone` , `update_time`) VALUES (15 , 1 , '医院' , '广东省-梅州市-梅江区-梅州三路66号' , '梅州市梅州三路66号医院' , '510940' , '18816833761' , 1572241035) [ RunTime:0.000178s ]
+[ sql ] [ SQL ] UPDATE `bin_order`  SET `total_price` = 39.5 , `update_time` = 1572241035  WHERE  `order_id` = 15 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order` (`member_id` , `order_sn` , `year` , `month` , `create_time` , `update_time`) VALUES (1 , '2019102898511015' , 2019 , 10 , 1572241035 , 1572241035) [ RunTime:0.000174s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (16 , 10048 , '潮盛贡菜70g 保质期: 365天 70g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247329261691168.jpg' , 1 , 3 , 3 , '') [ RunTime:0.000230s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (16 , 10051 , '盛记辣椒酱 500g 500g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247332075098595.jpg' , 2 , 11.5 , 23 , '') [ RunTime:0.000201s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_address` (`order_id` , `member_id` , `name` , `first_address` , `address` , `code` , `phone` , `update_time`) VALUES (16 , 1 , '二监区' , '广东省-荔湾区-梅江区-荔湾区南京路' , '荔湾区南京路' , '510940' , '18816833761' , 1572241035) [ RunTime:0.000191s ]
+[ sql ] [ SQL ] UPDATE `bin_order`  SET `total_price` = 26 , `update_time` = 1572241035  WHERE  `order_id` = 16 [ RunTime:0.000264s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:37:15+08:00] 14.30.0.28 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.002877s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000636s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.002559s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (14,15,16,12,13,10,11,8,9,6,7) [ RunTime:0.000575s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.002442s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_address` WHERE  `order_id` IN (14,15,16,12,13,10,11,8,9,6,7) [ RunTime:0.000414s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:39:02+08:00] 14.30.0.28 GET coop.360gh.com/home/order/pay/order_id/10.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000361s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.002852s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1  AND `order_id` = 10 LIMIT 1 [ RunTime:0.000462s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:39:05+08:00] 14.30.0.28 POST coop.360gh.com/home/order/pay/order_id/10.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000376s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003047s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1  AND `order_id` = 10 LIMIT 1 [ RunTime:0.000567s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:40:15+08:00] 14.30.0.28 POST coop.360gh.com/home/member/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000350s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member` [ RunTime:0.003560s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member` WHERE  ( `member_name` = '东莞监狱' OR `phone` = '东莞监狱' ) LIMIT 1 [ RunTime:0.000541s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:40:22+08:00] 14.30.0.28 GET coop.360gh.com/home/member_goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003456s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,10 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003459s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10060,10049,10054,10046,10048,10051,10050,10047,10045,10052) [ RunTime:0.000562s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:40:27+08:00] 14.30.0.28 GET coop.360gh.com/home/member_goods/index.html?%2Fhome%2Fmember_goods%2Findex_html=&page=2
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000304s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003435s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 10,10 [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003448s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10051,10050,10052,10058,10047,10045,10033,10034,10032,10031) [ RunTime:0.000573s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:40:32+08:00] 14.30.0.28 GET coop.360gh.com/home/member_goods/index.html?%2Fhome%2Fmember_goods%2Findex_html=&page=7
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000351s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003063s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 60,10 [ RunTime:0.000403s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.002944s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10000 [ RunTime:0.000387s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:40:35+08:00] 14.30.0.28 GET coop.360gh.com/home/member_goods/index.html?%2Fhome%2Fmember_goods%2Findex_html=&page=6
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000357s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003656s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 50,10 [ RunTime:0.000456s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003467s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10002,10001,10007,10008,10009,10010,10011,10012,10013,10014) [ RunTime:0.000547s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:40:38+08:00] 14.30.0.28 GET coop.360gh.com/home/member_goods/index.html?%2Fhome%2Fmember_goods%2Findex_html=&page=5
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000328s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003422s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 40,10 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003440s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10023,10028,10027,10026,10025,10024,10006,10014,10013,10012) [ RunTime:0.000532s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:40:48+08:00] 14.30.0.28 GET coop.360gh.com/home/goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000320s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003526s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_goods` WHERE  `status` = 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SELECT `goods_id`,`goods_name`,`goods_price`,`goods_image`,`category_name` FROM `bin_goods` WHERE  `status` = 1 LIMIT 0,10 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.008898s ]
+[ sql ] [ SQL ] SELECT `goods_id` FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000346s ]
+---------------------------------------------------------------
+
+[2019-10-28T13:41:24+08:00] 14.30.0.28 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000354s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003524s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000713s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003172s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (14,15,16,12,13,10,11,8,9,6,7) [ RunTime:0.000672s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.003158s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_address` WHERE  `order_id` IN (14,15,16,12,13,10,11,8,9,6,7) [ RunTime:0.000450s ]

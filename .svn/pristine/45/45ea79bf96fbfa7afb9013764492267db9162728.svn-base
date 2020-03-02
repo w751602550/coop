@@ -1,0 +1,31 @@
+<script src="/static/plugins/jquery.cookie.js"></script>
+<script src="/static/home/js/compare.js"></script>
+<link rel="stylesheet" href="/static/plugins/perfect-scrollbar.min.css">
+<script src="/static/plugins/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="/static/plugins/js/qtip/jquery.qtip.min.js"></script>
+<link href="/static/plugins/js/qtip/jquery.qtip.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/plugins/jquery.lazyload.min.js"></script>
+<script>
+    //懒加载
+    $("img.lazyload").lazyload({
+//        placeholder : "/static/home/images/loading.gif",
+        effect: "fadeIn",
+        skip_invisible: false,
+        threshold: 200,
+    });
+</script>
+<div class="footer-info">
+    <div class="links w1200">
+        <a href="/" target="_blank">关于我们</a>|
+        <a href="/" target="_blank">联系我们</a>|
+        <a href="/" target="_blank">商家入驻</a>|
+        <a href="/" target="_blank">营销中心</a>|
+        <a href="/" target="_blank">手机商城</a>|
+        <a href="/" target="_blank">友情链接</a>|
+        <a href="/" target="_blank">销售联盟</a>|
+        <a href="/" target="_blank">商城社区</a>|
+        <a href="/" target="_blank">商城公益</a>|
+        <a href="/" target="_blank">English Site</a>
+    </div>
+    <p class="copyright">盛世商潮</p>
+</div>

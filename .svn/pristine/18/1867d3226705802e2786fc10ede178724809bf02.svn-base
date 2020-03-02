@@ -1,0 +1,82 @@
+<?php
+
+namespace app\store\model;
+
+
+use think\Db;
+use think\Exception;
+use think\facade\Request;
+
+class Order extends BaseModel
+{
+
+    protected $pk = 'order_id';
+    protected $append = ['payment_type_name'];
+
+    public function member()
+    {
+        return $this->hasOne('Member', 'member_id', 'member_id')->bind('member_name');
+    }
+
+    public function goods()
+    {
+        return $this->hasMany('OrderGoods');
+    }
+
+    public function address()
+    {
+        return $this->hasOne('OrderAddress');
+    }
+
+    public function getPaymentTypeNameAttr($value, $data)
+    {
+        $text = [
+            '0' => '',
+            'month' => '月结',
+            'online' => '现结',
+        ];
+        return $text[$data['payment_type']];
+    }
+
+    public function getPage($condition = [])
+    {
+        return $this->with('member')->where($condition)->paginate($this->psize, false);
+    }
+
+    public function detail($key)
+    {
+        return self::with('goods,address')->get($key);
+    }
+
+    public static function getOne($condition = [])
+    {
+        return self::get($condition);
+    }
+
+    public function getAll($condition = [])
+    {
+        return self::with('address')->where($condition)->all();
+    }
+
+    public function edit($data)
+    {
+        return $this->allowField(true)->save($data);
+    }
+
+    public function setDelete($order_id)
+    {
+        Db::startTrans();
+        try {
+            self::destroy($order_id);
+            (new OrderGoods)->setDelete($order_id);
+            (new OrderAddress)->setDelete($order_id);
+            Db::commit();
+        } catch (Exception $e) {
+            Db::rollback();
+            $this->error = $e->getMessage();
+            return false;
+        }
+        return true;
+    }
+
+}

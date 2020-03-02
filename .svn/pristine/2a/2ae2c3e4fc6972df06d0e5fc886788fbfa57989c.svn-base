@@ -1,0 +1,63 @@
+---------------------------------------------------------------
+
+[2019-12-12T11:55:20+08:00] 123.125.71.15 GET coop.360gh.com/
+[运行时间：0.038435s] [吞吐率：26.02req/s] [内存消耗：725.60kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-12-12T11:55:20+08:00] 123.125.71.77 GET coop.360gh.com/home/member/login.html
+[运行时间：0.045348s] [吞吐率：22.05req/s] [内存消耗：739.95kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'accept-language' => 'zh-cn,zh-tw',
+  'if-none-match' => '"@NULL@"',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'cookie' => 'PHPSESSID=1q2qm5punkckvhij9dvos49ag1;',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2019-12-12T15:40:52+08:00] 113.77.194.208 GET coop.360gh.com//home/Index/viewed_info.html
+[运行时间：0.041678s] [吞吐率：23.99req/s] [内存消耗：717.90kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36 Maxthon/5.2.7.5000',
+  'dnt' => '1',
+  'referer' => 'http://coop.360gh.com/home/goods/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN',
+  'cookie' => 'UM_distinctid=16d709e97d946e-0062ed4a834b3-7f2d3614-1fa400-16d709e97da9f3; PHPSESSID=rmb1k0mp0ttjjdkg6pmi1vv1i7; Hm_lvt_6661f30874a5d926a54d93320572b6a4=1573784234,1575941540,1575945183; Hm_lpvt_6661f30874a5d926a54d93320572b6a4=1575945183; yunsuo_session_verify=562125a7a5f8b348f4297e96b00cbe2e',
+)
+[ info ] [ PARAM ] array (
+  '/home/Index/viewed_info_html' => '',
+)
+[ error ] [0]Method app\home\controller\Index::viewed_info() does not exist[/home/www/web/coop_360gh_com/thinkphp/library/think/route/dispatch/Module.php:108]

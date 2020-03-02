@@ -1,0 +1,127 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="javascript:">供应商品列表</a></li>
+    </ul>
+    <form method="get">
+        <table class="dsm-search-table">
+            <tbody>
+            <tr>
+                <td>&nbsp;</td>
+                <th style="width:90px;">物品名称：</th>
+                <td class="w150"><input type="text" class="text" name="keywords" value="{$keywords}"></td>
+                <td class="w90 tc">
+                    <input type="submit" class="submit" value="搜索">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<form id="my-form">
+    <table class="dsm-default-table">
+        <thead>
+        <tr ds_type="table_header">
+            <th class="w30"><input type="checkbox" class="check-all"></th>
+            <th class="w70"></th>
+            <th class="tl">物品名称</th>
+            <th class="w200">所属分类</th>
+            <th class="w100">供应价格</th>
+            <th>单位</th>
+            <th class="w90">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {if !$list->isEmpty()}
+        {volist name='list' id='vo'}
+        <tr class="bd-line">
+            <td> {if !in_array($vo.goods_id,$goodsIdList)}
+                <input type="checkbox" class="check-item" name="goods[]" value="{$vo.goods_id}">
+                {/if}
+            </td>
+            <td>
+                <div class="goods-pic-small">
+            <span class="thumb size60"> <i></i>
+                <a href="" target="_blank">
+                    <img height="46" width="60" src="{$vo.goods_image}"></a>
+            </span>
+                </div>
+            </td>
+            <td class="tl">
+                <dl class="goods-name">
+                    <dt>{$vo.goods_name}</dt>
+                </dl>
+            </td>
+            <td>{:htmlspecialchars_decode($vo.category_name)}</td>
+            <td>{$vo.goods_price}</td>
+            <td>{$vo.unit_name}</td>
+            <td>
+                {if !in_array($vo.goods_id,$goodsIdList)}
+                <p>
+                    <a href="javascript:void(0)" class="dsm-btn dsm-btn-orange addcoop"
+                       data-id="{$vo.goods_id}">加入合约商品</a>
+                </p>
+                {else}
+                <p>合约商品</p>
+                {/if}
+            </td>
+        </tr>
+        {/volist}
+        {/if}
+        <tr>
+            <td colspan="2">
+                <a href="javascript:void(0)" class="dsm-btn dsm-btn-blue add-goods bin-submit">批量加入</a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="20">
+                <div class="pagination">{$list->render()|raw}</div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</form>
+<script>
+    $(function () {
+        $('.addcoop').on('click', function () {
+            let that = $(this);
+            layer.confirm('是否加入合约商品', function (index) {
+                let load = layer.load();
+                that.attr('disabled', true);
+                $.ajax({
+                    type: 'post',
+                    url: "{:url('memberGoods/add')}",
+                    data: {member_goods_id: that.data('id')},
+                    success: function (res) {
+                        layer.close(load);
+                        that.attr('disabled', false);
+                        res.code == 1 ? show_success(res.msg, res.url) : show_error(res.msg);
+                    }
+                })
+            })
+        });
+        $('.check-all').on('click', function () {
+            $('.check-item').prop('checked', $(this).prop('checked'));
+        });
+        $('.check-item').on('click', function () {
+            if ($(this).prop('checked') == false)
+                $('.check-all').prop('checked', false);
+        });
+        $('.bin-submit').on('click', function () {
+            let checknum = $('.check-item:checked').length;
+            if (checknum == 0) {
+                layer.alert('请勾选需加入分类的商品');
+            } else {
+                $('#my-form').ajaxpost();
+            }
+        });
+    })
+
+</script>
+
+{/block}

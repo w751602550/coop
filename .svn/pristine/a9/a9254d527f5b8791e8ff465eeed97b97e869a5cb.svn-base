@@ -1,0 +1,64 @@
+<?php
+	
+	namespace app\store\model;
+	
+	use think\Db;
+	
+	class Order extends Store{
+		
+		protected $table= 'order';
+		//订单列表
+		public function orderlist($condition)
+		{
+			
+			//$result =Db($this->table)->where($condition)->order('order_id desc')->paginate(25);
+			$result =Db($this->table)->alias('a')->join('bin_member c','a.member_id=c.member_id')
+					->field('c.member_name,a.order_id,a.status,a.order_sn,a.payment_sn,a.payment_type,a.create_time,a.total_price')
+					->where($condition)->order('order_id desc')->paginate(25);
+					
+			return $result;
+		}
+		//id订单info
+		public function orderinfo($id){
+			$result =Db($this->table)->alias('a')->join('bin_order_address c','a.order_id=c.order_id')
+					->where('a.order_id',$id)
+					->find(); 
+			//$result =Db($this->table)->where('order_id',$id)->find();
+		
+			return $result;
+		}
+		
+		public function select($table,$condition){
+			
+			$result =Db($table)->where($condition)->select();
+		
+			return $result;
+			
+		}
+		//编辑订单
+		public function edit($status,$id){
+			
+			$condition =['order_id'=>$id];
+			
+			$time =time();
+			
+			$data =[
+			
+				'status'=>$status,
+				
+				'update_time'=>$time,
+			
+			];
+			
+			$result = Db($this->table)->where($condition)->update($data);
+			
+			return $result;
+		}
+		
+		public function del($condition){
+			
+			Db($this->table)->where($condition)->delete();
+			Db('bin_order_address')->where($condition)->delete();
+			Db('bin_order_goods')->where($condition)->delete();
+		}
+	}

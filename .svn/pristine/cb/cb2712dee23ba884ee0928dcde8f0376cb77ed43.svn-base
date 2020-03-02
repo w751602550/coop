@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="/static/common/plugins/umeditor/themes/default/css/umeditor.css">
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <form id="my-form" class="am-form tpl-form-line-form" method="post">
+                    <div class="widget-body">
+                        <fieldset>
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">更新订单信息</div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">订单号 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="text" class="tpl-form-input" name=""
+                                           value="{$order.order_sn}"  disabled='disabled'>
+                                </div>
+                            </div>
+                           
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">订单价格 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="number" name="" value="{$order.total_price}" disabled='disabled'>
+                                </div>
+                            </div>
+                           
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">单位 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <select name="goods[unit]" required  data-am-selected="{ btnSize: 'sm',maxHeight: 400}">								
+												<option value="10"{if condition="$order.status eq 10"}selected{/if}>待审核</option>
+												<option value="15"{if condition="$order.status eq 15"}selected{/if}>已审核</option>
+												<option value="20"{if condition="$order.status eq 20"}selected{/if}>待发货</option>
+												<option value="30"{if condition="$order.status eq 30"}selected{/if}>已发货</option>
+												<option value="40"{if condition="$order.status eq 40"}selected{/if}>已送达</option>
+												<option value="50"{if condition="$order.status eq 50"}selected{/if}>已付款</option>
+												<option value="60"{if condition="$order.status eq 60"}selected{/if}>已完成</option>
+												<option value="70"{if condition="$order.status eq 70"}selected{/if}>已关闭</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">商品 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <div class="am-form-file">
+                                        <div class="am-form-file">
+                                            <div class="uploader-list am-cf">
+                                                <div class="file-item">
+												 <ul>
+												{volist name='goods' id='good'}
+													<li><a  title="点击查看大图" target="_blank">
+                                                        <img src="{$good.goods_image}">
+                                                    </a><a href="">{$good.goods_name}</a></li>										
+												{/volist}
+												</ul> 
+                                                </div>   
+                                            </div>
+                                        </div>
+                                        <div class="help-block am-margin-top-sm">
+                                            <small>大小2M以下</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3 am-margin-top-lg">
+                                    <button type="submit" class="j-submit am-btn am-btn-secondary">提交
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="layouts/_template/tpl_file_item" /}
+{include file="layouts/_template/file_library" /}
+<script src="/static/common/plugins/umeditor/umeditor.config.js"></script>
+<script src="/static/common/plugins/umeditor/umeditor.min.js"></script>
+<script>
+
+    $(function () {
+        UM.getEditor('container', {
+            // initialFrameWidth: 100% ,
+            initialFrameHeight: 600
+        });
+        $('#my-form').superForm();
+    });
+</script>

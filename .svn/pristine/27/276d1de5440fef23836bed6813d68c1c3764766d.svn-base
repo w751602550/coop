@@ -1,0 +1,265 @@
+<?php /*a:3:{s:69:"/home/www/web/coop_360gh_com/application/home/view/order/confirm.html";i:1571641210;s:71:"/home/www/web/coop_360gh_com/application/home/view/layout/mall_top.html";i:1571293930;s:74:"/home/www/web/coop_360gh_com/application/home/view/layout/mall_footer.html";i:1571277532;}*/ ?>
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>广货商城</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/static/home/css/common.css">
+    <link rel="stylesheet" href="/static/home/css/home_header.css">
+    <script>
+        var BASESITEROOT = "";
+        var HOMESITEROOT = "/static/home";
+        var BASESITEURL = "<?php echo htmlentities($base_url); ?>";
+        var HOMESITEURL = "<?php echo htmlentities($base_url); ?>/home";
+    </script>
+    <script src="/static/plugins/jquery-2.1.4.min.js"></script>
+    <script src="/static/plugins/common.js"></script>
+    <script src="/static/plugins/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/static/plugins/jquery.validate.min.js"></script>
+    <script src="/static/plugins/additional-methods.min.js"></script>
+    <script src="/static/plugins/layer/layer.js"></script>
+    <script src="/static/plugins/js/dialog/dialog.js" id="dialog_js" charset="utf-8"></script>
+</head>
+<body>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="public-top">
+    <div class="w1200">
+                <span class="top-link">
+                    您好，欢迎来到 <em>广货商城</em>
+                </span>
+        <ul class="login-regin">
+            <li class="line"> <a href="<?php echo url('member/index'); ?>"><?php echo htmlentities($member['member']['member_name']); ?></a></li>
+            <li> <a href="<?php echo url('member/logout'); ?>">退出</a></li>
+        </ul>
+
+        <ul class="quick_list">
+            <li>
+                <span class="outline"></span>
+                <span class="blank"></span>
+                <a href="<?php echo url('member/index'); ?>">用户中心<b></b></a>
+                <div class="dropdown-menu">
+                    <ol>
+                        <li><a href="<?php echo url('member.order/index'); ?>">已买到的商品</a></li>
+                        <li><a href="<?php echo url('member.favorite/index'); ?>">我关注的商品</a></li>
+
+                    </ol>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="/static/home/css/home_cart.css">
+<script src="/static/plugins/mlselection.js"></script>
+
+
+<div class="dsc-header">
+    <div class="logo">
+        <a href="<?php echo url('member/index'); ?>">
+            <img src="http://www.360gh.com/data/upload/shop/common/05041196300000964.png">
+        </a>
+    </div>
+    <ul class="dsc-flow">
+        <li class=""><i class="iconfont"></i>
+            <p>我的购物车</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class="current"><i class=" iconfont"></i>
+            <p>填写核对购物信息</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class=""><i class="iconfont"></i>
+            <p>支付提交</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class=""><i class="iconfont"></i>
+            <p>订单完成</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+    </ul>
+</div>
+<form method="post" id="my-form">
+    <div class="dsc-main">
+        <div class="dsc-title">
+            <h3>填写核对购物信息</h3>
+            <h5>请仔细核对订单信息</h5>
+        </div>
+        <div class="dsc-receipt-info">
+            <div class="dsc-receipt-info-title">
+                <h3>收货人信息</h3>
+                <!--                <a href="javascript:void(0)" ds_type="buy_edit" id="edit_reciver">[修改]</a>-->
+            </div>
+            <div id="addr_list" class="dsc-candidate-items">
+                <ul>
+                    <li>
+                        <span class="true-name"><?php echo htmlentities($order['address']['name']); ?></span>
+                        <span class="address"><?php echo htmlentities($order['address']['address']); ?>(<?php echo htmlentities($order['address']['first_address']); ?>)</span>
+                        <span class="phone"><i class="iconfont"></i><?php echo htmlentities($order['address']['phone']); ?></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dsc-receipt-info" id="paymentCon">
+            <div class="dsc-receipt-info-title">
+                <h3>支付方式</h3>
+                <!--                <a href="javascript:void(0)" ds_type="buy_edit" id="edit_payment">[修改]</a>-->
+            </div>
+            <div id="payment_list" class="dsc-candidate-items">
+                <ul>
+                    <li>
+                        <label>
+                            <input type="radio" value="online" name="order[payment_type]">
+                            在线支付
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" value="month" name="order[payment_type]" checked>
+                            月结支付
+                        </label>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="dsc-receipt-info">
+            <div class="dsc-receipt-info-title">
+                <h3>商品清单</h3>
+                <!--                <a href="<?php echo url('cart/index'); ?>">返回购物车</a>-->
+            </div>
+            <table class="dsc-table-style">
+                <thead>
+                <tr>
+                    <th class="w20"></th>
+                    <th></th>
+                    <th>商品</th>
+                    <th class="w120">单价(元)</th>
+                    <th class="w120">数量</th>
+                    <th class="w120">小计(元)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if(!$order['goods']->isEmpty()): if(is_array($order['goods']) || $order['goods'] instanceof \think\Collection || $order['goods'] instanceof \think\Paginator): $i = 0; $__LIST__ = $order['goods'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$goods): $mod = ($i % 2 );++$i;?>
+                <tr id="cart_item_15" class="shop-list ">
+                    <td>
+
+                    </td>
+                    <td class="w60">
+                        <a href="javascript:" target="_blank" class="dsc-goods-thumb">
+                            <img src="<?php echo htmlentities($goods['goods_image']); ?>" alt=""></a>
+                    </td>
+                    <td class="tl">
+                        <dl class="dsc-goods-info">
+                            <dt><a href="javascript:" target="_blank"><?php echo htmlentities($goods['goods_name']); ?></a></dt>
+                        </dl>
+                    </td>
+                    <td class="w120"><em><?php echo htmlentities($goods['price']); ?></em></td>
+                    <td class="w60"><?php echo htmlentities($goods['number']); ?></td>
+                    <td class="w120">
+                        <em id="item15_subtotal" ds_type="eachGoodsTotal"><?php echo htmlentities($goods['total_price']); ?></em>
+                    </td>
+                </tr>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+                <?php endif; ?>
+                <tr>
+                    <td class="w10"></td>
+                    <td class="tl" colspan="2">买家留言：
+                        <textarea name="order[remark]" class="dsc-msg-textarea"
+                                  placeholder="选填：对本次交易的说明（建议填写已经和商家达成一致的说明）" maxlength="150"></textarea></td>
+                    <td class="tl" colspan="3">
+                        <div class="dsc-form-default"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tr" colspan="6">
+                        <div class="dsc-store-account">
+                            <dl class="freight">
+                                <dt>运费：</dt>
+                                <dd><em id="eachStoreFreight_1">0.00</em>元</dd>
+                            </dl>
+                            <dl>
+                                <dt>商品金额：</dt>
+                                <dd><em id="eachStoreGoodsTotal_1"><?php echo htmlentities($order['total_price']); ?></em>元</dd>
+                            </dl>
+                            <dl class="total">
+                                <dt>本店合计：</dt>
+                                <dd><em store_id="1" ds_type="eachStoreTotal"><?php echo htmlentities($order['total_price']); ?></em>元</dd>
+                            </dl>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <div class="dsc-all-account">订单总金额：<em id="orderTotal"><?php echo htmlentities($order['total_price']); ?></em>元</div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="dsc-bottom">
+            <a id="submitOrder" class="dsc-btn dsc-btn-acidblue fr">确认订单</a>
+        </div>
+    </div>
+</form>
+<script>
+    $(function(){
+        $('#submitOrder').on('click',function(){
+            let that=$(this);
+            layer.confirm('是否确认订单信息',function(index){
+                let load=layer.load();
+                that.attr('disabled',true);
+                $.ajax({
+                    type:'post',
+                    data:$('#my-form').serialize(),
+                    success:function(res){
+                        layer.close(load);
+                        that.attr('disabled',false);
+                        res.code==1?show_success(res.msg,res.url):show_error(res.msg);
+                    }
+                });
+            })
+        })
+    })
+</script>
+<script src="/static/plugins/jquery.cookie.js"></script>
+<script src="/static/home/js/compare.js"></script>
+<link rel="stylesheet" href="/static/plugins/perfect-scrollbar.min.css">
+<script src="/static/plugins/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="/static/plugins/js/qtip/jquery.qtip.min.js"></script>
+<link href="/static/plugins/js/qtip/jquery.qtip.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/plugins/jquery.lazyload.min.js"></script>
+<script>
+    //懒加载
+    $("img.lazyload").lazyload({
+//        placeholder : "/static/home/images/loading.gif",
+        effect: "fadeIn",
+        skip_invisible: false,
+        threshold: 200,
+    });
+</script>
+<div class="footer-info">
+    <div class="links w1200">
+        <a href="/" target="_blank">关于我们</a>|
+        <a href="/" target="_blank">联系我们</a>|
+        <a href="/" target="_blank">商家入驻</a>|
+        <a href="/" target="_blank">营销中心</a>|
+        <a href="/" target="_blank">手机商城</a>|
+        <a href="/" target="_blank">友情链接</a>|
+        <a href="/" target="_blank">销售联盟</a>|
+        <a href="/" target="_blank">商城社区</a>|
+        <a href="/" target="_blank">商城公益</a>|
+        <a href="/" target="_blank">English Site</a>
+    </div>
+    <p class="copyright">盛世商潮</p>
+</div>

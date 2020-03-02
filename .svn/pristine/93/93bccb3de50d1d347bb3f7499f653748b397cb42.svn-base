@@ -1,0 +1,76 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li><a href="{:url('memberGoods.category/index')}">商品分类</a></li>
+        <li><a href="{:url('memberGoods.category/add')}">添加分类</a></li>
+        <li class="active"><a href="{:url('memberGoods.category/addAll')}">批量添加分类</a></li>
+    </ul>
+</div>
+<div class="alert alert-block">
+    <ul>
+        <li>多个分类名称，请用英文逗号“,”分隔。</li>
+    </ul>
+</div>
+
+<div class="dsm-default-form fl" style="width: 100%;">
+    <form method="POST" id="my-form">
+        <div id="vat_invoice_panel" class="dsc-form-default">
+            <dl>
+                <dt>上级分类</dt>
+                <dd>
+                    <select name="category[pid]" class="text w200">
+                        <option value="0">顶级分类</option>
+                        {if $categoryList}
+                        {volist name='categoryList' id='vo'}
+                        <option value="{$vo.category_id}">{$vo.name}</option>
+                        {present name='vo.child'}
+                        {volist name='vo.child' id='sub'}
+                        <option value="{$sub.category_id}" >|----{$sub.name}</option>
+                        {/volist}
+                        {/present}
+                        {/volist}
+                        {/if}
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt><i class="required">*</i>分类名称</dt>
+                <dd>
+                    <input type="text" class="text w400"  name="category[name]" value="">
+                </dd>
+            </dl>
+            <dl>
+                <dt>排序</dt>
+                <dd>
+                    <input type="text" class="text w200" maxlength="50" name="category[sort]" value="100">
+                </dd>
+            </dl>
+            <dl>
+                <dt></dt>
+                <dd>
+                    <input type="submit" class="submit bin_submit" value="保存">
+                </dd>
+            </dl>
+        </div>
+    </form>
+</div>
+<script>
+    $('#my-form').validate({
+        submitHandler: function (form) {
+            ajaxpost('my-form');
+        },
+        rules: {
+            'category[name]': {
+                required: true
+            },
+        },
+        messages: {
+            'category[name]': {
+                required: '<i class="iconfont">&#xe64c;</i>请输入分类名称'
+            },
+        }
+    });
+
+</script>
+{/block}

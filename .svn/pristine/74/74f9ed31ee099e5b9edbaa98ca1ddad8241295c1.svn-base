@@ -1,0 +1,409 @@
+---------------------------------------------------------------
+
+[2019-10-23T09:58:42+08:00] 113.77.194.194 POST coop.360gh.com/home/member/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000358s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member` [ RunTime:0.003460s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member` WHERE  ( `member_name` = '东莞监狱' OR `phone` = '东莞监狱' ) LIMIT 1 [ RunTime:0.000504s ]
+---------------------------------------------------------------
+
+[2019-10-23T09:58:49+08:00] 113.77.194.194 POST coop.360gh.com/home/member/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000325s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member` [ RunTime:0.002998s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member` WHERE  ( `member_name` = '东莞监狱' OR `phone` = '东莞监狱' ) LIMIT 1 [ RunTime:0.000471s ]
+---------------------------------------------------------------
+
+[2019-10-23T09:58:53+08:00] 113.77.194.194 GET coop.360gh.com/home/member_goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000351s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.002654s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,10 [ RunTime:0.000416s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.002487s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10060,10049,10054,10046,10048,10051,10050,10047,10045,10052) [ RunTime:0.000473s ]
+---------------------------------------------------------------
+
+[2019-10-23T09:58:55+08:00] 113.77.194.194 GET coop.360gh.com/home/member_goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000320s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.002752s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000330s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,10 [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.002663s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10060,10049,10054,10046,10048,10051,10050,10047,10045,10052) [ RunTime:0.000458s ]
+---------------------------------------------------------------
+
+[2019-10-23T09:58:57+08:00] 113.77.194.194 GET coop.360gh.com/home/member_goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000317s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.002700s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,10 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.002558s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10060,10049,10054,10046,10048,10051,10050,10047,10045,10052) [ RunTime:0.000523s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:38:16+08:00] 113.77.193.1 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000355s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003551s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000578s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003289s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (6,7,3,4,1,2) [ RunTime:0.000559s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:38:18+08:00] 113.77.193.1 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000344s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003470s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003307s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (6,7,3,4,1,2) [ RunTime:0.000561s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:39:00+08:00] 120.229.113.121 POST coop.360gh.com/home/member/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000387s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member` [ RunTime:0.003492s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member` WHERE  ( `member_name` = '东莞监狱' OR `phone` = '东莞监狱' ) LIMIT 1 [ RunTime:0.000549s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:39:08+08:00] 120.229.113.121 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000321s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003284s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003061s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (6,7,3,4,1,2) [ RunTime:0.000486s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:39:13+08:00] 120.229.113.121 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000386s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003555s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000597s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003273s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (6,7,3,4,1,2) [ RunTime:0.000505s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:40:26+08:00] 120.229.113.121 POST coop.360gh.com/home/order/importfile.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000341s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003352s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10060 LIMIT 1 [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003325s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10060 [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10049 LIMIT 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10049 [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10054 LIMIT 1 [ RunTime:0.000299s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10054 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10046 LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10046 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10048 LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10048 [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1  AND `member_goods_id` = 10051 LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` = 10051 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003087s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order` (`member_id` , `order_sn` , `year` , `month` , `create_time` , `update_time`) VALUES (1 , '2019102397989710' , 2019 , 10 , 1571816426 , 1571816426) [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.002919s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (8 , 10060 , '上海药皂 125克 125g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247239341056929.jpg' , 1 , 3.29 , 3.29 , '') [ RunTime:0.000275s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (8 , 10049 , '川南麻辣萝卜干80g 保质期：15个月 80g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247330223920023.jpg' , 2 , 3.2 , 6.4 , '') [ RunTime:0.000249s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (8 , 10054 , '海天 特级金标生抽王 500ml 500ml' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247335635487250.jpg' , 3 , 11.5 , 34.5 , '') [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.002789s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_address` (`order_id` , `member_id` , `name` , `first_address` , `address` , `code` , `phone` , `update_time`) VALUES (8 , 1 , '一监区' , '广东省-东莞市-东莞市-石碣镇街' , '石碣镇街' , 523000 , '18816833761' , 1571816426) [ RunTime:0.000237s ]
+[ sql ] [ SQL ] UPDATE `bin_order`  SET `total_price` = 44.19 , `update_time` = 1571816426  WHERE  `order_id` = 8 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order` (`member_id` , `order_sn` , `year` , `month` , `create_time` , `update_time`) VALUES (1 , '2019102397981019' , 2019 , 10 , 1571816426 , 1571816426) [ RunTime:0.000185s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (9 , 10046 , '乌江涪陵榨菜微辣 80G 保质期16个月 80g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247327307117035.jpg' , 4 , 3.3 , 13.2 , '') [ RunTime:0.000226s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (9 , 10048 , '潮盛贡菜70g 保质期: 365天 70g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247329261691168.jpg' , 5 , 3 , 15 , '') [ RunTime:0.000231s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_goods` (`order_id` , `member_goods_id` , `goods_name` , `goods_image` , `number` , `price` , `total_price` , `remark`) VALUES (9 , 10051 , '盛记辣椒酱 500g 500g' , 'http://www.360gh.com/data/upload/shop/store/goods/8811/2019/10/18/8811_06247332075098595.jpg' , 6 , 11.5 , 69 , '') [ RunTime:0.000200s ]
+[ sql ] [ SQL ] INSERT INTO `bin_order_address` (`order_id` , `member_id` , `name` , `first_address` , `address` , `code` , `phone` , `update_time`) VALUES (9 , 1 , '四监区' , '广东省-东莞市-东莞市-石碣镇街' , '石碣镇街' , 523000 , '18816833761' , 1571816426) [ RunTime:0.000245s ]
+[ sql ] [ SQL ] UPDATE `bin_order`  SET `total_price` = 97.2 , `update_time` = 1571816426  WHERE  `order_id` = 9 [ RunTime:0.000266s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:40:27+08:00] 120.229.113.121 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000332s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003432s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000588s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003291s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000587s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:41:29+08:00] 113.77.193.1 GET coop.360gh.com//home/Index/viewed_info.html
+[ error ] [0]Method app\home\controller\Index::viewed_info() does not exist
+---------------------------------------------------------------
+
+[2019-10-23T15:43:04+08:00] 120.229.113.121 GET coop.360gh.com/home/member_goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000311s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.002685s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,10 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.002595s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10060,10049,10054,10046,10048,10051,10050,10047,10045,10052) [ RunTime:0.000466s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:43:07+08:00] 120.229.113.121 GET coop.360gh.com/home/goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000352s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.003488s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_goods` WHERE  `status` = 1 [ RunTime:0.000434s ]
+[ sql ] [ SQL ] SELECT `goods_id`,`goods_name`,`goods_price`,`goods_image`,`category_name` FROM `bin_goods` WHERE  `status` = 1 LIMIT 0,10 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.003278s ]
+[ sql ] [ SQL ] SELECT `goods_id` FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000388s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:43:23+08:00] 120.229.113.121 GET coop.360gh.com/home/member_goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000325s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.002702s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member_goods` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,10 [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.002547s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_goods` WHERE  `goods_id` IN (10060,10049,10054,10046,10048,10051,10050,10047,10045,10052) [ RunTime:0.000495s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:43:24+08:00] 120.229.113.121 GET coop.360gh.com/home/goods/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000324s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_goods` [ RunTime:0.002964s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `bin_goods` WHERE  `status` = 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT `goods_id`,`goods_name`,`goods_price`,`goods_image`,`category_name` FROM `bin_goods` WHERE  `status` = 1 LIMIT 0,10 [ RunTime:0.000376s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member_goods` [ RunTime:0.002827s ]
+[ sql ] [ SQL ] SELECT `goods_id` FROM `bin_member_goods` WHERE  `member_id` = 1 [ RunTime:0.000307s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:44:38+08:00] 120.229.113.121 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000326s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.002900s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.002703s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000497s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:46:58+08:00] 120.229.113.121 GET coop.360gh.com/home/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000361s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003261s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000572s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003050s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000539s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:51:40+08:00] 120.229.113.121 GET coop.360gh.com//home/Index/viewed_info.html
+[ error ] [0]Method app\home\controller\Index::viewed_info() does not exist
+---------------------------------------------------------------
+
+[2019-10-23T15:57:46+08:00] 125.93.185.138 POST coop.360gh.com/home/member/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000335s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_member` [ RunTime:0.003486s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_member` WHERE  ( `member_name` = '东莞监狱' OR `phone` = '东莞监狱' ) LIMIT 1 [ RunTime:0.000506s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:57:49+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:57:53+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:58:14+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:58:15+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:58:16+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:58:17+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:58:18+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:58:21+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[ error ] [1]Class 'app\home\model\BaseMember' not found
+---------------------------------------------------------------
+
+[2019-10-23T15:58:25+08:00] 101.89.239.230 GET coop.360gh.com/
+[运行时间：0.024502s] [吞吐率：40.81req/s] [内存消耗：692.55kb] [文件加载：69]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-10-23T15:58:28+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[运行时间：0.032150s] [吞吐率：31.10req/s] [内存消耗：728.05kb] [文件加载：74]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36 Maxthon/5.2.7.5000',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://coop.360gh.com/home/member/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN',
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=16d709e97d946e-0062ed4a834b3-7f2d3614-1fa400-16d709e97da9f3; PHPSESSID=6o5icq2noifp0esf9npgohmb14; Hm_lvt_6661f30874a5d926a54d93320572b6a4=1571102994,1571475171,1571475182,1571668777; Hm_lpvt_6661f30874a5d926a54d93320572b6a4=1571715398; yunsuo_session_verify=6acfb0bdbf7b27c55b5458fcea71cd97',
+)
+[ info ] [ PARAM ] array (
+  '/home/order/index_html' => '',
+)
+[ error ] [1]Class 'app\home\model\BaseMember' not found[/home/www/web/coop_360gh_com/application/home/model/Order.php:11]
+---------------------------------------------------------------
+
+[2019-10-23T15:58:41+08:00] 101.89.239.216 GET coop.360gh.com/home/captcha/makecode.html?1571817450344
+[运行时间：0.024385s] [吞吐率：41.01req/s] [内存消耗：635.01kb] [文件加载：64]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) 			Chrome/55.0.2883.95 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://coop.360gh.com/home/member/login.html',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+  '/home/captcha/makecode_html' => '',
+  0 => '',
+)
+---------------------------------------------------------------
+
+[2019-10-23T15:58:49+08:00] 61.151.178.174 GET coop.360gh.com/home/order/index.html
+[运行时间：0.023813s] [吞吐率：41.99req/s] [内存消耗：695.10kb] [文件加载：69]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://coop.360gh.com/home/member/index.html',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+  '/home/order/index_html' => '',
+)
+---------------------------------------------------------------
+
+[2019-10-23T15:58:58+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[运行时间：0.079345s] [吞吐率：12.60req/s] [内存消耗：2,028.02kb] [文件加载：97]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36 Maxthon/5.2.7.5000',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://coop.360gh.com/home/member/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN',
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=16d709e97d946e-0062ed4a834b3-7f2d3614-1fa400-16d709e97da9f3; PHPSESSID=6o5icq2noifp0esf9npgohmb14; Hm_lvt_6661f30874a5d926a54d93320572b6a4=1571102994,1571475171,1571475182,1571668777; Hm_lpvt_6661f30874a5d926a54d93320572b6a4=1571715398; yunsuo_session_verify=6acfb0bdbf7b27c55b5458fcea71cd97',
+)
+[ info ] [ PARAM ] array (
+  '/home/order/index_html' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/order/index.html [ array (
+  0 => 'base_url',
+  1 => 'group',
+  2 => 'rount_uri',
+  3 => 'member',
+  4 => 'menu',
+  5 => 'list',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003572s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000612s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003323s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000548s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.003337s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_address` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000508s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:59:05+08:00] 125.93.185.138 GET coop.360gh.com/home/order/index.html
+[运行时间：0.060848s] [吞吐率：16.43req/s] [内存消耗：1,806.68kb] [文件加载：95]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36 Maxthon/5.2.7.5000',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://coop.360gh.com/home/member/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN',
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=16d709e97d946e-0062ed4a834b3-7f2d3614-1fa400-16d709e97da9f3; PHPSESSID=6o5icq2noifp0esf9npgohmb14; Hm_lvt_6661f30874a5d926a54d93320572b6a4=1571102994,1571475171,1571475182,1571668777; Hm_lpvt_6661f30874a5d926a54d93320572b6a4=1571715398; yunsuo_session_verify=6acfb0bdbf7b27c55b5458fcea71cd97',
+)
+[ info ] [ PARAM ] array (
+  '/home/order/index_html' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/order/index.html [ array (
+  0 => 'base_url',
+  1 => 'group',
+  2 => 'rount_uri',
+  3 => 'member',
+  4 => 'menu',
+  5 => 'list',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000384s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003550s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000616s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003243s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.003066s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_address` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000405s ]
+---------------------------------------------------------------
+
+[2019-10-23T15:59:12+08:00] 113.77.194.194 GET coop.360gh.com/home/order/index.html
+[运行时间：0.057859s] [吞吐率：17.28req/s] [内存消耗：1,803.43kb] [文件加载：95]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://coop.360gh.com/home/member_goods/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16d7097921b1-041d897deba7ef-43450521-384000-16d7097921ce9b; PHPSESSID=3rhihpkddicuud0tibi42femj0; Hm_lvt_6661f30874a5d926a54d93320572b6a4=1571021510,1571626480,1571718683,1571795911; Hm_lpvt_6661f30874a5d926a54d93320572b6a4=1571795911; _ga=GA1.2.345530472.1571800605; _gid=GA1.2.1047659309.1571800605; yunsuo_session_verify=36878712dd1aa8aa2a4bd67ea53b68a2',
+)
+[ info ] [ PARAM ] array (
+  '/home/order/index_html' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/order/index.html [ array (
+  0 => 'base_url',
+  1 => 'group',
+  2 => 'rount_uri',
+  3 => 'member',
+  4 => 'menu',
+  5 => 'list',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000330s ] mysql:host=localhost;port=3306;dbname=coop;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order` [ RunTime:0.003252s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order` WHERE  `member_id` = 1 ORDER BY `update_time` DESC LIMIT 0,11 [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_goods` [ RunTime:0.003045s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_goods` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000516s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bin_order_address` [ RunTime:0.002833s ]
+[ sql ] [ SQL ] SELECT * FROM `bin_order_address` WHERE  `order_id` IN (8,9,6,7,3,4,1,2) [ RunTime:0.000418s ]

@@ -291,3 +291,6 @@ ALTER TABLE `bin_member_goods`  ADD COLUMN `unit` INT UNSIGNED NOT NULL DEFAULT 
 ALTER TABLE `bin_member_goods`  ADD COLUMN `unit_name` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '单位名称';
 ALTER TABLE `bin_member_goods`  ADD COLUMN `spec` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '商品规格';
 ALTER TABLE `bin_member_goods` ADD COLUMN `last_update` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后更新时间';
+-- 20200110
+ALTER TABLE `bin_order` ADD COLUMN `store_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '店铺ID' AFTER `member_id`;
+UPDATE  `bin_order` SET store_id=1;

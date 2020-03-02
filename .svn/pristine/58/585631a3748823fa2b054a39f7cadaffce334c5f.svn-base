@@ -1,0 +1,88 @@
+ <div class="am-scrollable-horizontal am-u-sm-12">
+                        <table width="100%" class="am-table am-table-compact am-table-striped
+                         tpl-table-black am-text-nowrap">
+                            <thead>
+                            <tr>
+								<th><input type="checkbox" class="check_all"></th>
+                                <th>订单号</th>
+								<th>下单人</th>
+								<th>总价(¥)</th>
+                                <th>付款方式</th>
+                                <th>订单时间</th>
+                                <th>付款单号</th>
+                                <th>订单状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>                         
+                            {volist name='order' id='orders'}
+                            <tr>
+								<td class="am-text-middle">                                   
+                                  <input type="checkbox" class="checkbox-item" name="ids[]"
+                                               value="{$orders.order_id}">
+                                </td>
+								<td class="am-text-middle">{$orders.order_sn}</td>
+                                <td class="am-text-middle">{$orders.member_name}</td>
+								<td class="am-text-middle" style='color:#fc6d26'>{$orders.total_price}</td>
+								<td class="am-text-middle">
+									{if condition="$orders.payment_type eq 'month'"}月结{else}
+										现结
+									{/if}
+								</td>
+                                <td class="am-text-middle">{$orders.create_time|date="Y-m-d H:i:s"}</td>
+							    <td class="am-text-middle">
+									{if condition="$orders.payment_sn eq '0'"}{else}
+										{$orders.payment_sn}
+									{/if}
+								</td>
+							    <td class="am-text-middle">
+								{foreach $status as $k=>$v}
+									{if condition="$orders.status eq $k"}{$v}
+									{/if}
+								{/foreach}						
+								</td>
+							    <td class="am-text-middle"> 
+									<a href="{:url('order/edit',['id'=>$orders.order_id])}" class="tpl-table-black-operation-green" title="编辑状态">
+                                            <i class="am-icon-pencil"></i> 
+                                     </a>
+										&nbsp;&nbsp;
+									<a href="javascript:" class="tpl-table-black-operation-del rmSupply" title='移除订单' data-id="{$orders.order_id}">
+                                            <i class="am-icon-trash"></i>
+                                     </a>
+								</td>
+                            </tr>
+                            {/volist}                         
+                            </tbody>
+                        </table>
+                    </div>
+					
+<script>
+    $(function () {
+         $('.check_all').on('click', function () {
+            let type=$(this).prop('checked');
+            $('.checkbox-item').prop('checked', type);
+         });
+		 $('.rmSupply').on('click',function(){
+            let that=$(this);
+            layer.confirm('确定移除订单?',function(index){
+                let order_id = that.data('id');
+                if (order_id == '')
+                    return false;
+                $.ajax({
+                    type: 'post',
+                    url:'{:url("delorder")}',
+                    data: {id: order_id},
+                    success: function (res) {
+                        res.code == 1 ? $.show_success(res.msg, res.url) : $.show_error(res.msg);
+                    }
+                })
+               layer.close(index);
+            });
+        });
+
+		
+	});
+	
+</script>
+
+

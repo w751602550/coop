@@ -1,0 +1,49 @@
+---------------------------------------------------------------
+
+[2019-11-25T01:57:23+08:00] 144.76.44.207 GET coop.360gh.com/
+[运行时间：0.040921s] [吞吐率：24.44req/s] [内存消耗：724.67kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'user-agent' => 'Thither.Direct Bot/0.0.1 (+https://thither.direct/en/opensearch/details/webmaster/)',
+  'accept-encoding' => 'br, deflate, zstd, gzip, bzip2',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-25T09:17:14+08:00] 54.154.164.156 GET coop.360gh.com/
+[运行时间：0.041700s] [吞吐率：23.98req/s] [内存消耗：725.01kb] [文件加载：127]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1467.0 Safari/537.36',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=k6m1kehv46968gglk8f4uoch31',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2019-11-25T09:17:15+08:00] 54.154.164.156 GET coop.360gh.com/home/member/login.html
+[运行时间：0.047528s] [吞吐率：21.04req/s] [内存消耗：739.43kb] [文件加载：129]
+[ info ] [ LANG ] /home/www/web/coop_360gh_com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'coop.360gh.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1467.0 Safari/537.36',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'PHPSESSID=k6m1kehv46968gglk8f4uoch31; yunsuo_session_verify=8f316c19af4f8b03c96aea254a62bc78',
+)
+[ info ] [ PARAM ] array (
+  '/home/member/login_html' => '',
+)
+[ info ] [ VIEW ] /home/www/web/coop_360gh_com/application/home/view/member/login.html [ array (
+) ]

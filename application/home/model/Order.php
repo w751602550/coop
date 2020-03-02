@@ -10,7 +10,6 @@ use think\facade\Request;
 class Order extends BaseMember
 {
     protected $pk = 'order_id';
-    //10待审核20待发货30己发货40己送达50己付款60己完成70己关闭'
     public $data = [
         '10' => '待审核',
         '15' => '待付款',
@@ -75,6 +74,7 @@ class Order extends BaseMember
                 $order['order_sn'] = $this->orderNo();
                 $order['year'] = date('Y', $time);
                 $order['month'] = date('m', $time);
+                $order['store_id']=$this->member['member']['store_id'];
                 $orderModel->save($order);
                 foreach ($val['goods'] as $item => $goods) {
                     $goodsArr[$item]['order_id'] = $orderModel->order_id;

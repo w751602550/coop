@@ -1,0 +1,130 @@
+<link rel="stylesheet" href="/static/common/plugins/umeditor/themes/default/css/umeditor.css">
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <form id="my-form" class="am-form tpl-form-line-form" method="post">
+                    <div class="widget-body">
+                        <fieldset>
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">更新产品信息</div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">商品名称 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="text" class="tpl-form-input" name="goods[goods_name]"
+                                           value="{$detail.goods_name}" required>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">状态 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <label class="am-radio-inline">
+                                        <input type="radio" name="goods[status]" value="1" data-am-ucheck
+                                               checked>
+                                        上架
+                                    </label>
+                                    <label class="am-radio-inline">
+                                        <input type="radio" name="goods[status]" {if $detail.status.value== 0}checked{/if}value="0"
+                                        data-am-ucheck>
+                                        下架
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">商品价格 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="number" name="goods[price]" value="{$detail.goods_price}">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">市场价 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="number" name="goods[marketprice]" value="{$detail.goods_marketprice}">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">商品卖点 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <textarea name="goods[goods_jingle]"
+                                              maxlength="200">{$detail.goods_jingle}</textarea>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">商品规格 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="text" class="tpl-form-input" name="goods[goods_spec]"
+                                           value="{$detail.goods_spec}">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">单位 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <select name="goods[unit]" required
+                                            data-am-selected="{ btnSize: 'sm',maxHeight: 400}">
+                                        {if !$unit->isEmpty()}
+                                        {volist name='unit' id='vo'}
+                                        <option value="{$vo.id}">{$vo.name}</option>
+                                        {/volist}
+                                        {/if}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">商品图 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <div class="am-form-file">
+                                        <div class="am-form-file">
+                                            <div class="uploader-list am-cf">
+                                                {if !$detail.image->isEmpty()}
+                                                {volist name='detail.image' id='vo'}
+                                                <div class="file-item">
+                                                    <a href="{$vo.url}" title="点击查看大图" target="_blank">
+                                                        <img src="{$vo.url}">
+                                                    </a>
+                                                </div>
+                                                {/volist}
+                                                {/if}
+                                            </div>
+                                        </div>
+                                        <div class="help-block am-margin-top-sm">
+                                            <small>大小2M以下</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">详情 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <textarea id="container" name="goods[goods_body]" type="text/plain">
+                                        {$detail.goods_body|raw}
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3 am-margin-top-lg">
+                                    <button type="submit" class="j-submit am-btn am-btn-secondary">提交
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="layouts/_template/tpl_file_item" /}
+{include file="layouts/_template/file_library" /}
+<script src="/static/common/plugins/umeditor/umeditor.config.js"></script>
+<script src="/static/common/plugins/umeditor/umeditor.min.js"></script>
+<script>
+
+    $(function () {
+        UM.getEditor('container', {
+            // initialFrameWidth: 100% ,
+            initialFrameHeight: 600
+        });
+        $('#my-form').superForm();
+    });
+</script>

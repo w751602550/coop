@@ -1,0 +1,30 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="{:url('member.address/index')}">我的地址</a></li>
+        <li><a href="{:url('member.address/add')}">新增地址</a></li>
+    </ul>
+</div>
+<table class="dsm-default-table">
+    <thead>
+    <tr>
+        <th class="w80">收货人</th>
+        <th class="w150">所在地区</th>
+        <th class="tl">街道地址</th>
+        <th class="w120">电话/手机</th>
+        <th class="w150"></th>
+        <th class="w110">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td colspan="20" class="norecord">
+            <div class="warning-option"><i>&nbsp;</i><span>暂无符合条件的数据记录</span></div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+{/block}

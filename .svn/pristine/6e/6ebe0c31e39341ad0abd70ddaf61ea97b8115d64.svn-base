@@ -1,0 +1,248 @@
+<?php /*a:2:{s:74:"/home/Web/coop_360gh_com/application/store/view/member/goods/all_list.html";i:1571554365;s:67:"/home/Web/coop_360gh_com/application/store/view/layouts/layout.html";i:1575946828;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>后台管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="/static/common/i/favicon.ico"/>
+    <meta name="apple-mobile-web-app-title" content=""/>
+    <link rel="stylesheet" href="/static/common/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/static/store/css/app.css?v=<?php echo htmlentities($version); ?>"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_783249_3hfdb7m5w0j.css">
+    <script src="/static/common/js/jquery.min.js"></script>
+    <script>
+        BASE_URL = '<?php echo htmlentities($base_url); ?>';
+        STORE_URL = '<?php echo htmlentities($store_url); ?>';
+    </script>
+</head>
+
+<body data-type="">
+<div class="am-g tpl-g">
+    <!-- 头部 -->
+    <header class="tpl-header">
+        <!-- 右侧内容 -->
+        <div class="tpl-header-fluid">
+            <!-- 侧边切换 -->
+            <div class="am-fl tpl-header-button switch-button">
+                <i class="iconfont icon-menufold"></i>
+            </div>
+            <!-- 刷新页面 -->
+            <div class="am-fl tpl-header-button refresh-button">
+                <i class="iconfont icon-refresh"></i>
+            </div>
+            <!-- 其它功能-->
+            <div class="am-fr tpl-header-navbar">
+                <ul>
+                    <li class="am-text-sm tpl-header-navbar-welcome">
+                        <a href="<?php echo htmlentities($base_url); ?>" target="_blank">首页</a>
+                    </li>
+                    <!-- 欢迎语 -->
+                    <li class="am-text-sm tpl-header-navbar-welcome">
+                        <a href="<?php echo url('admin/renew'); ?>">欢迎你，<span><?php echo htmlentities($store['store']['store_name']); ?></span>
+                        </a>
+                    </li>
+                    <!-- 退出 -->
+                    <li class="am-text-sm">
+                        <a href="<?php echo url('store/logout'); ?>">
+                            <i class="iconfont icon-tuichu"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- 侧边导航栏 -->
+    <div class="left-sidebar dis-flex">
+        <?php $menus=$menus?:[]; $group=$group?:[]; ?>
+        <!-- 一级菜单 -->
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-heading">后台管理系统</li>
+            <?php if(is_array($menus) || $menus instanceof \think\Collection || $menus instanceof \think\Paginator): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?>
+            <li class="sidebar-nav-link">
+                <a href="<?php echo isset($item['index'])?url($item['index']):'javascript:;'; ?>" class="<?php if($key == $group): ?>active<?php endif; ?>">
+                    <i class="iconfont sidebar-nav-link-logo <?php echo htmlentities($item['icon']); ?>" style="color:<?php echo isset($itme['color'])?$item['color']:''; ?>"></i>
+                    <?php echo htmlentities($item['name']); ?>
+                </a>
+            </li>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
+        </ul>
+
+        <?php $second=isset($menus[$group]['submenu'])?$menus[$group]['submenu']:''; if(!empty($second)): ?>
+        <ul class="left-sidebar-second">
+            <li class="sidebar-second-title"><?php echo htmlentities($menus[$group]['name']); ?></li>
+            <li class="sidebar-second-item">
+                <?php if(is_array($second) || $second instanceof \think\Collection || $second instanceof \think\Paginator): $i = 0; $__LIST__ = $second;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub): $mod = ($i % 2 );++$i;if(isset($sub['submenu'])): ?>
+                <div class="sidebar-third-item">
+                    <a href="javascript:void(0);" class="sidebar-nav-sub-title <?php echo isset($sub['active'])&&$sub['active']?'active':''; ?>">
+                        <i class="iconfont icon-caret"></i>
+                        <?php echo htmlentities($sub['name']); ?>
+                    </a>
+                    <ul class="sidebar-third-nav-sub">
+                        <?php if(is_array($sub['submenu']) || $sub['submenu'] instanceof \think\Collection || $sub['submenu'] instanceof \think\Paginator): $i = 0; $__LIST__ = $sub['submenu'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$third): $mod = ($i % 2 );++$i;?>
+                        <li>
+                            <a class="<?php if($rount_uri == $third['index']): ?>active<?php endif; ?>" href="<?php echo url($third['index']); ?>" ><?php echo htmlentities($third['name']); ?></a>
+                        </li>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                    </ul>
+                </div>
+                <?php else: ?>
+                <a href="<?php echo url($sub['index']); ?>"
+                   class="<?php if($rount_uri == $sub['index']): ?>active<?php endif; ?>">
+                    <?php echo htmlentities($sub['name']); ?>
+                </a>
+                <?php endif; ?>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+            </li>
+        </ul>
+        <?php endif; ?>
+    </div>
+    <div class="tpl-content-wrapper <?php echo empty($second)?'no-sidebar-second':''; ?>">
+        <div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-cf">合约商品列表</div>
+                </div>
+                <div class="widget-body am-fr">
+                    <div class="page_toolbar am-margin-bottom-xs am-cf">
+                        <form class="toolbar-form" action="" method="get">
+                            <div class="am-u-sm-12 am-u-md-3">
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-9">
+                                <div class="am fr">
+                                    <div class="am-form-group am-fl">
+                                        <?php $category_id=request()->get('category_id') ?>
+                                        <select name="category_id"
+                                                data-am-selected="{searchBox: 1, btnSize: 'sm',  placeholder: '商品分类', maxHeight: 400}">
+                                            <option value=""></option>
+                                            <?php if((!empty($category))): if(is_array($category) || $category instanceof \think\Collection || $category instanceof \think\Paginator): $i = 0; $__LIST__ = $category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$first): $mod = ($i % 2 );++$i;?>
+                                            <option value="<?php echo htmlentities($first['category_id']); ?>" disabled
+                                                    <?php echo $first['category_id']==$category_id ? 'selected' : ''; ?>><?php echo htmlentities($first['name']); ?>
+                                            </option>
+                                            <?php if((isset($first['child']))): if(is_array($first['child']) || $first['child'] instanceof \think\Collection || $first['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $first['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub): $mod = ($i % 2 );++$i;?>
+                                            <option value="<?php echo htmlentities($sub['category_id']); ?>" disabled
+                                                    <?php echo $sub['category_id']==$category_id ? 'selected' : ''; ?>> -- <?php echo htmlentities($sub['name']); ?>
+                                            </option>
+                                            <?php if((isset($sub['child']))): if(is_array($sub['child']) || $sub['child'] instanceof \think\Collection || $sub['child'] instanceof \think\Paginator): $i = 0; $__LIST__ = $sub['child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$three): $mod = ($i % 2 );++$i;?>
+                                            <option value="<?php echo htmlentities($three['category_id']); ?>" <?php echo $three['category_id']==$category_id ? 'selected' : ''; ?>> ---- <?php echo htmlentities($three['name']); ?></option>
+                                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                                            <?php endif; ?>
+                                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                                            <?php endif; ?>
+                                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        <?php $goods_status=$request->get('goods_status') ?>
+                                        <select name="goods_status"
+                                                data-am-selected="{btnSize: 'sm', placeholder: '商品状态'}">
+                                            <option value=""></option>
+                                            <option value="10" <?php echo $goods_status==10 ? 'selected' : ''; ?>>上架</option>
+                                            <option value="20" <?php echo $goods_status==20 ? 'selected' : ''; ?>>下架</option>
+                                        </select>
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form">
+                                            <input type="text" class="am-form-field" name="goods_name"
+                                                   placeholder="请输入商品名称"
+                                                   value="<?php echo $request->get('goods_name'); ?>">
+                                            <div class="am-input-group-btn">
+                                                <button class="am-btn am-btn-default am-icon-search"
+                                                        type="submit"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="am-scrollable-horizontal am-u-sm-12">
+                        <table width="100%" class="am-table am-table-compact am-table-striped
+                         tpl-table-black am-text-nowrap">
+                            <thead>
+                            <tr>
+                                <th>商品ID</th>
+                                <th>商品图片</th>
+                                <th>商品名称</th>
+                                <th>分类名称</th>
+                                <th>用户Id</th>
+                                <th>合约价格</th>
+                                <th>供应价</th>
+                                <th>合约时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(!$list->isEmpty()): if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$goods): $mod = ($i % 2 );++$i;?>
+                            <tr>
+                                <td class="am-text-middle"><?php echo htmlentities($goods['member_goods_id']); ?></td>
+                                <td class="am-text-middle">
+                                    <a href="" title="点击查看大图" target="_blank">
+                                        <img src="<?php echo htmlentities($goods['goods']['goods_image']); ?>"
+                                             width="50" height="50" alt="商品图片">
+                                    </a>
+                                </td>
+                                <td class="am-text-middle">
+                                    <p class="item-title"><?php echo htmlentities($goods['goods']['goods_name']); ?></p>
+                                </td>
+                                <td class="am-text-middle"><?php echo htmlspecialchars_decode($goods['goods']['category_name']); ?></td>
+                                <td class="am-text-middle"><?php echo htmlentities($goods['member_id']); ?></td>
+                                <td class="am-text-middle"><?php echo htmlentities($goods['price']); ?></td>
+                                <td class="am-text-middle"><?php echo htmlentities($goods['goods']['goods_price']); ?></td>
+                                <td class="am-text-middle"><?php echo htmlentities($goods['create_time']); ?></td>
+                                <td class="am-text-middle">
+                                    <div class="tpl-table-black-operation">
+                                        <a href="" target="_blank">
+                                            <i class="am-icon-eye"></i> 查看
+                                        </a>
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach; endif; else: echo "" ;endif; else: ?>
+                            <tr>
+                                <td colspan="9" class="am-text-center">暂无记录</td>
+                            </tr>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="am-u-lg-12 am-cf text-center">
+                        <div class="am-fr"><?php echo $list->render(); ?></div>
+                        <div class="am-fr pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总记录：<?php echo htmlentities($list->total()); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+
+    });
+</script>
+
+
+    </div>
+
+</div>
+<script src="/static/common/plugins/layer/layer.js"></script>
+<script src="/static/common/js/jquery.form.min.js"></script>
+<script src="/static/common/js/amazeui.min.js"></script>
+<script src="/static/common/js/webuploader.html5only.js"></script>
+<script src="/static/common/js/art-template.js"></script>
+<script src="/static/store/js/app.js?v=<?php echo htmlentities($version); ?>"></script>
+<script src="/static/store/js/file.library.js?v=<?php echo htmlentities($version); ?>"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<?php
+	
+	namespace app\store\model;
+	
+	use think\Db;
+	
+	class Order extends Store{
+		
+		protected $table= 'order';
+		//订单列表
+		public function orderlist($condition)
+		{
+			
+			$result =Db($this->table)->where($condition)->order('order_id desc')->paginate(25);
+			
+			return $result;
+		}
+		//id订单info
+		public function orderinfo($id){
+		
+			$result =Db($this->table)->where('order_id',$id)->find();
+		
+			return $result;
+		}
+		
+		public function select($table,$condition){
+			
+			$result =Db($table)->where($condition)->select();
+		
+			return $result;
+			
+		}
+		//编辑订单
+		public function edit($status,$id){
+			
+			$condition =['order_id'=>$id];
+			
+			$time =time();
+			
+			$data =[
+			
+				'status'=>$status,
+				
+				'update_time'=>$time,
+			
+			];
+			
+			$result = Db($this->table)->where($condition)->update($data);
+			
+			return $result;
+		}
+	}

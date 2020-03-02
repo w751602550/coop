@@ -1,0 +1,181 @@
+{include file="layout/mall_top" /}
+<link rel="stylesheet" href="/static/home/css/home_cart.css">
+<script src="/static/plugins/mlselection.js"></script>
+
+
+<div class="dsc-header">
+    <div class="logo">
+        <a href="{:url('member/index')}">
+            <img src="http://www.360gh.com/data/upload/shop/common/05041196300000964.png">
+        </a>
+    </div>
+    <ul class="dsc-flow">
+        <li class=""><i class="iconfont"></i>
+            <p>我的购物车</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class="current"><i class=" iconfont"></i>
+            <p>填写核对购物信息</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class=""><i class="iconfont"></i>
+            <p>支付提交</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+        <li class=""><i class="iconfont"></i>
+            <p>订单完成</p>
+            <sub></sub>
+            <div class="hr"></div>
+        </li>
+    </ul>
+</div>
+<form method="post" id="my-form">
+    <div class="dsc-main">
+        <div class="dsc-title">
+            <h3>填写核对购物信息</h3>
+            <h5>请仔细核对订单信息</h5>
+        </div>
+        <div class="dsc-receipt-info">
+            <div class="dsc-receipt-info-title">
+                <h3>收货人信息</h3>
+                <!--                <a href="javascript:void(0)" ds_type="buy_edit" id="edit_reciver">[修改]</a>-->
+            </div>
+            <div id="addr_list" class="dsc-candidate-items">
+                <ul>
+                    <li>
+                        <span class="true-name">{$order.address.name}</span>
+                        <span class="address">{$order.address.address}({$order.address.first_address})</span>
+                        <span class="phone"><i class="iconfont"></i>{$order.address.phone}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dsc-receipt-info" id="paymentCon">
+            <div class="dsc-receipt-info-title">
+                <h3>支付方式</h3>
+                <!--                <a href="javascript:void(0)" ds_type="buy_edit" id="edit_payment">[修改]</a>-->
+            </div>
+            <div id="payment_list" class="dsc-candidate-items">
+                <ul>
+                    <li>
+                        <label>
+                            <input type="radio" value="online" name="order[payment_type]">
+                            在线支付
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" value="month" name="order[payment_type]" checked>
+                            月结支付
+                        </label>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="dsc-receipt-info">
+            <div class="dsc-receipt-info-title">
+                <h3>商品清单</h3>
+                <!--                <a href="{:url('cart/index')}">返回购物车</a>-->
+            </div>
+            <table class="dsc-table-style">
+                <thead>
+                <tr>
+                    <th class="w20"></th>
+                    <th></th>
+                    <th>商品</th>
+                    <th class="w120">单价(元)</th>
+                    <th class="w120">数量</th>
+                    <th class="w120">小计(元)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {if !$order.goods->isEmpty()}
+                {volist name='order.goods' id='goods'}
+                <tr id="cart_item_15" class="shop-list ">
+                    <td>
+
+                    </td>
+                    <td class="w60">
+                        <a href="javascript:" target="_blank" class="dsc-goods-thumb">
+                            <img src="{$goods.goods_image}" alt=""></a>
+                    </td>
+                    <td class="tl">
+                        <dl class="dsc-goods-info">
+                            <dt><a href="javascript:" target="_blank">{$goods.goods_name}</a></dt>
+                        </dl>
+                    </td>
+                    <td class="w120"><em>{$goods.price}</em></td>
+                    <td class="w60">{$goods.number}</td>
+                    <td class="w120">
+                        <em id="item15_subtotal" ds_type="eachGoodsTotal">{$goods.total_price}</em>
+                    </td>
+                </tr>
+                {/volist}
+                {/if}
+                <tr>
+                    <td class="w10"></td>
+                    <td class="tl" colspan="2">买家留言：
+                        <textarea name="order[remark]" class="dsc-msg-textarea"
+                                  placeholder="选填：对本次交易的说明（建议填写已经和商家达成一致的说明）" maxlength="150"></textarea></td>
+                    <td class="tl" colspan="3">
+                        <div class="dsc-form-default"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tr" colspan="6">
+                        <div class="dsc-store-account">
+                            <dl class="freight">
+                                <dt>运费：</dt>
+                                <dd><em id="eachStoreFreight_1">0.00</em>元</dd>
+                            </dl>
+                            <dl>
+                                <dt>商品金额：</dt>
+                                <dd><em id="eachStoreGoodsTotal_1">{$order.total_price}</em>元</dd>
+                            </dl>
+                            <dl class="total">
+                                <dt>本店合计：</dt>
+                                <dd><em store_id="1" ds_type="eachStoreTotal">{$order.total_price}</em>元</dd>
+                            </dl>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <div class="dsc-all-account">订单总金额：<em id="orderTotal">{$order.total_price}</em>元</div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="dsc-bottom">
+            <a id="submitOrder" class="dsc-btn dsc-btn-acidblue fr">确认订单</a>
+        </div>
+    </div>
+</form>
+<script>
+    $(function(){
+        $('#submitOrder').on('click',function(){
+            let that=$(this);
+            layer.confirm('是否确认订单信息',function(index){
+                let load=layer.load();
+                that.attr('disabled',true);
+                $.ajax({
+                    type:'post',
+                    data:$('#my-form').serialize(),
+                    success:function(res){
+                        layer.close(load);
+                        that.attr('disabled',false);
+                        res.code==1?show_success(res.msg,res.url):show_error(res.msg);
+                    }
+                });
+            })
+        })
+    })
+</script>
+{include file="layout/mall_footer" /}

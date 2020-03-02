@@ -1,0 +1,215 @@
+<?php
+
+
+namespace app\store\controller;
+use app\store\model\Order as OrderModel;
+
+class Order extends Base
+{
+	public $data = [
+        '10' => '待审核',
+        '15' => '待付款',
+        '18' => '待确认',
+        '20' => '待发货',
+        '30' => '己发货',
+        '40' => '己送达',
+        '50' => '己完成',
+        '60' => '己关闭',
+    ];
+	
+	public  function order(){
+		
+		$order =New OrderModel();
+		
+		return $order;
+	}		
+	
+    public function index()
+    {
+        return $this->event();
+    }
+
+    public function all_list()
+    {
+		if(isset($_GET['order_sn'])){
+			
+			$order_sn =$_GET['order_sn'];
+			
+			$condition=['order_sn'=>$order_sn];
+			
+		}else{
+			
+			$condition=[];
+		}
+		
+		$order = $this->order()->orderlist($condition);
+		
+		$status =$this->data;
+		
+		$this->assign('order',$order);
+		
+		$this->assign('status',$status);
+
+		return $this->fetch('all_list');
+    }
+	//编辑订单
+	public function edit($id)
+	{
+		if($this->ajax){
+           
+		   $post= postData('order');			
+           
+		   if($this->order()->edit($post['status'],$id))
+               
+				return ajaxSuccess(getchina('updateSuccess'));
+           
+				return ajaxError(getchina('updateError'));
+        }
+			
+		$order = $this->order()->orderinfo($id); //订单信息
+		
+		$condition =['order_id'=>$id];
+		
+		$table ='order_goods';
+		
+		$goods =$this->order()->select($table,$condition);
+		
+		$status =$this->data;
+		
+		$this->assign('order',$order);
+		
+		$this->assign('order',$order);
+		
+		$this->assign('status',$status);
+		
+		$this->assign('goods',$goods);
+		
+		return $this->fetch();
+	}
+	//待发货列表
+    public function delivery_list()
+    {
+		if(isset($_GET['order_sn'])){
+			
+			$order_sn =$_GET['order_sn'];
+			
+			$condition=['order_sn'=>$order_sn];
+			
+		}else{
+			
+			$condition =['status'=>20];
+		}
+			
+		$order = $this->order()->orderlist($condition);
+		
+		$status =$this->data;
+		
+		$this->assign('status',$status);
+		
+		$this->assign('order',$order);
+		
+        return $this->fetch();
+    }
+	//待付款列表
+    public function pay_list()
+    {
+		
+		if(isset($_GET['order_sn'])){
+			
+			$order_sn =$_GET['order_sn'];
+			
+			$condition=['order_sn'=>$order_sn];
+			
+		}else{
+			
+			$condition =['status'=>15];
+		}
+        	
+		$order = $this->order()->orderlist($condition);
+		
+		$status =$this->data;
+		
+		$this->assign('status',$status);
+		
+		$this->assign('order',$order);
+		
+        return $this->fetch();
+    }
+	//待收货列表
+    public function receipt_list()
+    {
+		if(isset($_GET['order_sn'])){
+			
+			$order_sn =$_GET['order_sn'];
+			
+			$condition=['order_sn'=>$order_sn];
+			
+		}else{
+			
+			$condition =['status'=>30];
+		}
+        	
+		$order = $this->order()->orderlist($condition);		
+		
+		$status =$this->data;
+		
+		$this->assign('status',$status);
+		
+		$this->assign('order',$order);
+		
+        return $this->fetch();
+    }
+	//已完成列表
+    public function complete_list()
+    {
+		if(isset($_GET['order_sn'])){
+			
+			$order_sn =$_GET['order_sn'];
+			
+			$condition=['order_sn'=>$order_sn];
+			
+		}else{
+			
+			$condition =['status'=>50];
+		}
+       
+		$order = $this->order()->orderlist($condition);
+				
+		$status =$this->data;
+		
+		$this->assign('status',$status);
+		
+		$this->assign('order',$order);
+		
+        return $this->fetch();
+    }
+	//已取消列表
+    public function cancel_list()
+    {
+		if(isset($_GET['order_sn'])){
+			
+			$order_sn =$_GET['order_sn'];
+			
+			$condition=['order_sn'=>$order_sn];
+			
+		}else{
+			
+			$condition =['status'=>60];
+		}
+       	
+		$order = $this->order()->orderlist($condition);
+		
+		$status =$this->data;
+		
+		$this->assign('status',$status);
+		
+		$this->assign('order',$order);
+		
+        return $this->fetch();
+    }
+
+    private function event($type = 'all_list')
+    {
+        return $this->fetch('index');
+    }
+}

@@ -1,0 +1,133 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="/">合约商品</a></li>
+        <li><a href="{:url('memberGoods/export')}">导出合约商品</a></li>
+    </ul>
+    <form method="get" action="">
+        <table class="dsm-search-table">
+            <tbody>
+            <tr>
+                <td>&nbsp;</td>
+                <th style="width:90px;">物品名称：</th>
+                <td class="w150"><input type="text" class="text" name="keywords" value="{$keywords}"></td>
+                <td class="w90 tc">
+                    <input type="submit" class="submit" value="搜索">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+<table class="dsm-default-table">
+    <thead>
+    <tr ds_type="table_header">
+        <th class="w30">#</th>
+        <th class="w70"></th>
+        <th class="tl w150">物品名称</th>
+        <th class="w100">商品编号</th>
+        <th class="w200">所属分类</th>
+        <th class="w100">合约价格</th>
+        <th class="w150">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {if !$list->isEmpty()}
+    {volist name='list' id='vo'}
+    <tr class="bd-line">
+        <td>{$i}</td>
+        <td>
+            <div class="goods-pic-small">
+            <span class="thumb size60"> <i></i>
+                <a href="" target="_blank">
+                    <img height="46" width="60" src="{$vo.thumb}"></a>
+            </span>
+            </div>
+        </td>
+        <td class="tl">
+            <dl class="goods-name">
+                <dt>{$vo.name}</dt>
+            </dl>
+        </td>
+        <td>自定义：{$vo.goods_code}<br />商城：{$vo.member_goods_id}</td>
+        <td>{if $vo.category_name}{$category[$vo.cid1]}&nbsp;&gt;{$category[$vo.cid2]}&nbsp;&gt;{$category[$vo.cid3]}{/if}</td>
+        <td>{$vo.price}</td>
+        <td>
+            <div class="tpl-table-black-operation">
+                <a href="javascript:;" class="editGoods" data-id="{$vo.member_goods_id}">
+                    <i class="icon iconfont">&#xe672;</i> 编辑
+                </a>
+                <a href="javascript:;" class="rmcoop tpl-table-black-operation-del" data-id="{$vo.member_goods_id}">
+                 退出合约
+                </a>
+            </div>
+        </td>
+    </tr>
+    {/volist}
+    {/if}
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="20">
+            <div class="pagination">{$list->render()|raw}</div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+<script>
+    $(function(){
+        $('.rmcoop').on('click', function () {
+            let that = $(this);
+            layer.confirm('是否退出合约商品', function (index) {
+                let load = layer.load();
+                that.attr('disabled', true);
+                $.ajax({
+                    type: 'post',
+                    url:"{:url('member_goods/delete')}",
+                    data: {member_goods_id: that.data('id')},
+                    success: function (res) {
+                        layer.close(load);
+                        that.attr('disabled', false);
+                        res.code == 1 ? show_success(res.msg, res.url) : show_error(res.msg);
+                    }
+                })
+            })
+        });
+        $('.editGoods').on('click',function(){
+           let that=$(this);
+            $.post("{:url('member_goods/edit')}", {member_goods_id:$(this).data('id')}, function (e) {
+                layer.open({
+                    type: 1
+                    , title: '商品编辑'
+                    , area: ['600px', '600px']
+                    , offset: 'auto'
+                    , anim: 1
+                    , closeBtn: 1
+                    , shade: 0.3
+                    , btnAlign: 'c'
+                    , btn: ['保存','关闭']
+                    , content: e
+                    , success: function (layero, index) {
+                        layero.find('.selectbtn button').on('click', function (e) {
+                            $('input.select-url').val($(this).data('url'));
+                            layer.close(index);
+                        })
+                    }
+                    , yes: function (index,layero) {
+                        $.post("{:url('member_goods/editSave')}", $('#goods-edit').serialize(), function (res) {
+                            res.code == 1 ? show_success(res.msg, res.url) : show_error(res.msg);
+                        });
+                    }
+                });
+            });
+
+
+        });
+    })
+
+</script>
+{/block}

@@ -1,0 +1,103 @@
+{extend name="layout/member_base" /}
+{block name="member_main"}
+<style>
+    .dsm-container .right-layout {
+        background: none;
+        padding: 0
+    }
+
+    .tabmenu {
+        display: none
+    }
+</style>
+<div class="mc-left">
+    <div class='mc-user'>
+        <div class="mc-user-card fl">
+            <div class="circle-top"></div>
+            <div class="circle-bottom"></div>
+            <div class="user-head fl">
+                <p class="user-img">
+                    <img src="/static/home/images/member/default_user_portrait.gif">
+                </p>
+            </div>
+            <div class="mc-user-info fl ">
+                <div class="name">{$member.member.member_name}</div>
+                <a href="{:url('member.message/index')}" class="link">查看我的消息&nbsp;&gt;</a>
+                <a href="{:url('member/account')}" class="mc-user-btn">账户信息</a>
+            </div>
+        </div>
+
+        <div class="mc-user-huaban fl">
+            <ul style="display: flex;align-items: center;justify-content: center;">
+                <li>
+                    <a href="" class="dsm-btn dsm-btn-orange">合约商品下载</a>
+                </li>
+                <li>
+                    <a href="{:url('order/import')}" class="dsm-btn dsm-btn-blue order-import">
+                        订单导入</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mc-order-portal">
+        <ul>
+            <li class="portal-icon-1">
+                <a href=""><span class="iconfont">&#xe6a1;</span>待付款</a>
+            </li>
+            <li class="portal-icon-5">
+                <a href=""><span class="iconfont">&#xe6ef;</span>待发货</a>
+            </li>
+            <li class="portal-icon-2">
+                <a href=""><span class="iconfont">&#xe6f1;</span>待收货</a>
+            </li>
+            <li class="portal-icon-3">
+                <a href=""><span class="iconfont">&#xe730;</span>待评价</a>
+            </li>
+            <li class="portal-icon-4">
+                <a href=""><span class="iconfont">&#xe717;</span>退换货</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="mc-right">
+    <div class="mc-security">
+        <div class="title">账户安全</div>
+        <div class="content">低</div>
+        <div class="detail"><span class="iconfont">&#xe60e;</span>绑定手机<span class="state fr ">未绑定</span></div>
+        <div class="detail"><span class="iconfont">&#xe75a;</span>绑定邮箱<span class="state fr ">未绑定</span></div>
+    </div>
+</div>
+<div class="mc-left append"></div>
+<div class="mc-right append"></div>
+<div class="right-layout">
+    <div id="member_center_box" class="dsm-index-container">
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            var INFO_TYPE = ['goods_info', 'sns_info', 'order_info'/*, 'point_info'*/];
+
+            function _ajax_load(type) {
+                $.ajax({
+                    url: HOMESITEURL + '/Member/ajax_load_' + type,
+                    success: function (html) {
+                        INFO_TYPE.shift();
+                        if (INFO_TYPE[0]) {
+                            _ajax_load(INFO_TYPE[0]);
+                        }
+                        var container = '.mc-left.append';
+                        switch (type) {
+                            case "goods_info":
+                                container = ".mc-right.append"
+                        }
+                        $(container).append(html);
+                    }
+                });
+            }
+
+            // _ajax_load(INFO_TYPE[0])
+        });
+    </script>
+</div>
+{/block}

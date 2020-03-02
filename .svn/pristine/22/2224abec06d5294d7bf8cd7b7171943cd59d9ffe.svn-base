@@ -1,0 +1,68 @@
+<?php
+
+
+namespace app\store\controller;
+use app\store\model\Order as OrderModel;
+
+class Order extends Base
+{
+	public  function order(){
+		$order =New OrderModel();
+		return $order;
+	}		
+    public function index()
+    {
+        return $this->event();
+    }
+
+    public function all_list()
+    {
+		
+		$order = $this->order()->orderlist();
+		
+		$this->assign('order',$order);
+        
+		return $this->fetch('all_list');
+    }
+	//编辑订单
+	public function edit($id)
+	{
+		
+		$order = $this->order()->orderinfo($id); //订单信息
+		$condition =['order_id'=>$id];
+		$goods =$this->order()->select($condition);
+		$this->assign('order',$order);
+		$this->assign('goods',$goods);
+		return $this->fetch();
+	}
+
+    public function delivery_list()
+    {
+        return $this->event();
+    }
+
+    public function pay_list()
+    {
+        return $this->event();
+    }
+
+    public function receipt_list()
+    {
+        return $this->event();
+    }
+
+    public function complete_list()
+    {
+        return $this->event();
+    }
+
+    public function cancel_list()
+    {
+        return $this->event();
+    }
+
+    private function event($type = 'all_list')
+    {
+        return $this->fetch('index');
+    }
+}

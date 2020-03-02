@@ -1,0 +1,94 @@
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-cf">全部订单列表</div>
+                </div>
+                <div class="widget-body am-fr">
+                    <div class="page_toolbar am-margin-bottom-xs am-cf">
+                        <form class="toolbar-form" id="my-form"  method="post">
+                            <div class="am-u-sm-12 am-u-md-3">
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-9">
+                                <div class="am fr">
+                                    <div class="am-form-group am-fl">
+                                       <select name="status"
+                                                data-am-selected="{btnSize: 'sm', placeholder: '订单状态'}">
+												<option value='5' {$search_status==0?'selected':''}>订单状态</option>
+													{foreach $status as $k=>$v}					
+									                  <option value="{$k}" {$search_status==$k?'selected':''}>{$v}</option>
+													  {/foreach}                                   
+                                        </select>
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form">
+                                           <input type="text" class="am-form-field" name="order_sn"
+                                                   placeholder="请输入订单号"
+                                                   value="{$request->post('order_sn')|raw}">
+                                            <div class="am-input-group-btn">
+                                                <button class="am-btn am-btn-default am-icon-search"
+                                                        type="submit"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                   {include file='order/table'}
+				    <div class="am-u-sm-12">
+                        <a class="delorder am-btn am-btn-success am-btn-xs">
+                            移除
+                        </a>
+                    </div>
+                    <div class="am-u-lg-12 am-cf text-center">
+						 <div class="am-fr pagination-total am-margin-right">
+							<div class="am-vertical-align-middle" >总计：{$price}¥</div>
+						</div>
+                        <div class="am-fr">{$order->render()|raw}</div>
+                        <div class="am-fr pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总记录：{$order->total()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {	
+		 $('.delorder').on('click', function () {
+			var id = $(':checkbox');			
+			var str='';
+			var count=0;
+			for(var i=0;i<id.length;i++){
+				if(id.eq(i).is(':checked')){
+					 str+=','+id.eq(i).val();
+					 count++;
+					}
+				}
+			if(count ==0){
+				$.show_error('未选取订单');
+				return;
+			}
+            layer.confirm('是否移除'+count+'条订单',function(index){
+                layer.close(index);
+                let load=layer.load();				
+                $.ajax({
+                    type: 'post',
+                    data: {ids:str},
+					 async:true,//默认异步，false-同步
+                    success: function (res) {
+                        layer.close(load);           
+                        res.code == 1 ? $.show_success(res.msg, res.url) : $.show_error(res.msg);
+                    }
+                })
+            })
+
+        });
+
+	});
+	
+</script>
+
