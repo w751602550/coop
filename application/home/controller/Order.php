@@ -5,6 +5,7 @@ namespace app\home\controller;
 
 
 use app\home\model\Invoice;
+use think\Exception;
 use think\facade\Request;
 use app\home\model\MemberGoods;
 use app\home\model\Order as orderModel;
@@ -44,6 +45,7 @@ class Order extends Base
 
     public function confirm($order_id)
     {
+        token();
         $order = orderModel::detail($order_id);
         if ($this->ajax) {
             if (!$order || $order['status']['value'] != 10)
@@ -56,12 +58,16 @@ class Order extends Base
                 $post['status'] = 20;
             }
             $post['payment_sn'] = $order->payNo();
-            if ($order->edit($post, $order_id))
-                return ajaxSuccess('确认成功', url('order/pay', ['order_id' => $order_id]));
+            if ($order->edit($post, $order_id)){
+                if($post['payment_type'] == 'online')
+                    return ajaxSuccess('确认成功', url('order/pay', ['order_id' => $order_id]));
+                return ajaxSuccess('确认成功', url('order/index', ['order_id' => $order_id]));
+            }
             return ajaxError('确认失败');
         }
         if (!$order || $order['status']['value'] != 10)
-            $this->error('订单状态有误');
+                $this->error('订单状态有误');
+
         return $this->fetch('confirm', compact('order'));
     }
 
@@ -181,14 +187,19 @@ class Order extends Base
             $this->geterror = '文件过大或格式不正确，上传失败';
             return false;
         }
-        $ext = $info->getExtension();
+        $ext = strtolower($info->getExtension());
         $filePath = $uploadPath . DS . $info->getSaveName();
-        if ($ext == 'xlsx') {
-            $reader = \PHPExcel_IOFactory::createReader('Excel2007');
-        } else {
-            $reader = \PHPExcel_IOFactory::createReader('Excel5');
+        try{
+            if ($ext == 'xlsx') {
+                $reader = \PHPExcel_IOFactory::createReader('Excel2007');
+            } else {
+                $reader = \PHPExcel_IOFactory::createReader('Excel5');
+            }
+            $excel = $reader->load($filePath, $encode = 'utf-8');
+        }catch (\Exception $e){
+            $this->geterror='文件格式不正确，请重新转成Excel格式后上传';
+            return false;
         }
-        $excel = $reader->load($filePath, $encode = 'utf-8');
         $sheet = $excel->getSheet(0)->toArray();
         if (count($sheet) < 2) {
             $this->geterror = '文件中没有数据';
@@ -198,6 +209,8 @@ class Order extends Base
         $data = [];
         $error = [];
         foreach ($sheet as $key => $val) {
+            if(!$val[1])
+                break;
             $member_goods = $this->checkGoodsPrice($val[8]);
             $line = ++$key;
             if (!$member_goods) {

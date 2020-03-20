@@ -294,3 +294,20 @@ ALTER TABLE `bin_member_goods` ADD COLUMN `last_update` INT UNSIGNED NOT NULL DE
 -- 20200110
 ALTER TABLE `bin_order` ADD COLUMN `store_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '店铺ID' AFTER `member_id`;
 UPDATE  `bin_order` SET store_id=1;
+
+-- 20200303 增加财务系统
+DROP TABLE IF EXISTS `bin_finance`;
+CREATE TABLE IF NOT EXISTS `bin_finance`(
+`member_id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+`member_name` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '用户名',
+`password` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '密码',
+`last_time` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后登录时间',
+`login_times` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '登录次数',
+`status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态',
+`ip` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'ip地址',
+`create_time` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
+`update_time` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '更新时间',
+INDEX member_name(`member_name`)
+)ENGINE=INNODB DEFAULT CHARSET = UTF8;
+
+INSERT INTO bin_finance (`member_name`,`password`) values('finance','1697e0a24a5d9b4bb0e82ad793d86a93');

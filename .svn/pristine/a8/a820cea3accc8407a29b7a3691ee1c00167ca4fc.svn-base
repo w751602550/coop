@@ -1,0 +1,206 @@
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-cf">出售中的商品</div>
+                </div>
+                <div class="am-u-sm-12 am-u-md-3 am-u-lg-3">
+                    <div class="am-form-group">
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+                                <a class="am-btn am-btn-default am-btn-success am-radius update-coop"
+                                   href="javascript:">
+                                    <span class="am-icon-plus"></span> 同步更新合约商品
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page_toolbar am-margin-bottom-xs am-cf">
+                    <form class="toolbar-form" action="" method="get">
+                        <div class="am-u-sm-12 am-u-md-9">
+                            <div class="am fr">
+                                <div class="am-form-group am-fl">
+                                    {php}$category_id=request()->get('category_id'){/php}
+                                    <select name="category_id"
+                                            data-am-selected="{searchBox: 1, btnSize: 'sm',  placeholder: '商品分类', maxHeight: 400}">
+                                        <option value=""></option>
+                                        {if (!empty($category))}
+                                        {volist name='category' id='first'}
+                                        <option value="{$first.category_id}" disabled
+                                                {$first.category_id==$category_id?'selected':''}>{$first.name}
+                                        </option>
+                                        {if (isset($first.child))}
+                                        {volist name='first.child' id='sub'}
+                                        <option value="{$sub.category_id}" disabled
+                                                {$sub.category_id==$category_id?'selected':''}> -- {$sub.name}
+                                        </option>
+                                        {if (isset($sub.child))}
+                                        {volist name='sub.child' id='three'}
+                                        <option value="{$three.category_id}" {$three.category_id== $category_id?
+                                        'selected':''}> ---- {$three.name}</option>
+                                        {/volist}
+                                        {/if}
+                                        {/volist}
+                                        {/if}
+                                        {/volist}
+                                        {/if}
+                                    </select>
+                                </div>
+                                <div class="am-form-group am-fl">
+                                    {php}$goods_status=$request->get('goods_status'){/php}
+                                    <select name="goods_status"
+                                            data-am-selected="{btnSize: 'sm', placeholder: '商品状态'}">
+                                        <option value=""></option>
+                                        <option value="1" {$goods_status==1?'selected':''}>上架</option>
+                                        <option value="2" {$goods_status==2?'selected':''}>下架</option>
+                                    </select>
+                                </div>
+                                <div class="am-form-group am-fl">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form">
+                                        <input type="text" class="am-form-field" name="goods_name"
+                                               placeholder="请输入商品名称"
+                                               value="{$request->get('goods_name')|raw}">
+                                        <div class="am-input-group-btn">
+                                            <button class="am-btn am-btn-default am-icon-search"
+                                                    type="submit"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="widget-body am-fr">
+
+
+                    <div class="am-scrollable-horizontal am-u-sm-12">
+                        <table width="100%" class="am-table am-table-compact am-table-striped
+                         tpl-table-black am-text-nowrap">
+                            <thead>
+                            <tr>
+                                <th>商品ID</th>
+                                <th>商品图片</th>
+                                <th>商品名称</th>
+                                <th>分类名称</th>
+                                <th>价格</th>
+                                <th>市场价</th>
+                                <th>单位</th>
+                                <th>规格</th>
+                                <th>商品状态</th>
+                                <th>商城时间</th>
+                                <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {if !$list->isEmpty()}
+                            {volist name='list' id='goods'}
+                            <tr>
+                                <td class="am-text-middle">{$goods.goods_id}</td>
+                                <td class="am-text-middle">
+                                    <a href="" title="点击查看大图" target="_blank">
+                                        <img src="{$goods.goods_image}"
+                                             width="50" height="50" alt="商品图片">
+                                    </a>
+                                </td>
+                                <td class="am-text-middle">
+                                    <p class="item-title">{$goods.goods_name}</p>
+                                </td>
+                                <td class="am-text-middle">{:htmlspecialchars_decode($goods.category_name)}</td>
+                                <td class="am-text-middle">{$goods.goods_price}</td>
+                                <td class="am-text-middle">{$goods.goods_marketprice}</td>
+                                <td class="am-text-middle">{$goods.unit_name}</td>
+                               <td class="am-text-middle">{$goods.goods_spec}</td>
+                                <td class="am-text-middle">
+                                   <span class="j-state am-badge am-badge-{$goods.status.value==1?'success':'warning'}">{$goods.status.text}
+                                   </span>
+                                </td>
+                                <td class="am-text-middle">{$goods.goods_edittime|date='Y-m-d H:i:s'}</td>
+                                <td class="am-text-middle">{$goods.update_time}</td>
+                                <td class="am-text-middle">
+                                    <div class="tpl-table-black-operation">
+                                        <a href="" target="_blank">
+                                            <i class="am-icon-eye"></i> 查看
+                                        </a>
+                                        <a href="{:url('goods/edit',['goods_id'=>$goods.goods_id])}" target="_blank" class="tpl-table-black-operation-green">
+                                            <i class="am-icon-pencil"></i> 编辑
+                                        </a>
+                                        <a href="javascript:" class="tpl-table-black-operation-del rmSupply"
+                                           target="_blank" data-id="{$goods.goods_id}">
+                                            <i class="am-icon-trash"></i> 移出供应库
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/volist}
+                            {else /}
+                            <tr>
+                                <td colspan="9" class="am-text-center">暂无记录</td>
+                            </tr>
+                            {/if}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="am-u-lg-12 am-cf text-center">
+                        <div class="am-fr">{$list->render()|raw}</div>
+                        <div class="am-fr pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总记录：{$list->total()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.update-coop').on('click',function(){
+            let that=$(this);
+            layer.confirm('是否同步到合约商品',function(index){
+                let load=layer.load();
+                $.ajax({
+                    type: 'post',
+                    url:'{:url("goods/updateCoop")}',
+                    success: function (res) {
+                        layer.close(load);
+                        if(res.data.length != 0){
+                            let str='';
+                            for(let i=0;i<res.data.length;i++){
+                                str+=res.data[i]+'<br />';
+                            }
+                            layer.open({
+                                type: 1,
+                                area: ['420px', '240px'],
+                                content: str
+                            });
+                        }else{
+                            $.show_success(res.msg);
+                        }
+                    }
+                })
+                layer.close(index);
+            });
+        });
+        $('.rmSupply').on('click',function(){
+            let that=$(this);
+            layer.confirm('是否移除该供应商品',function(index){
+                let goods_id = that.data('id');
+                if (goods_id == '')
+                    return false;
+                $.ajax({
+                    type: 'post',
+                    url:'{:url("goods/delete")}',
+                    data: {goods_id: goods_id},
+                    success: function (res) {
+                        res.code == 1 ? $.show_success(res.msg, res.url) : $.show_error(res.msg);
+                    }
+                })
+               layer.close(index);
+            });
+        })
+    });
+</script>
+

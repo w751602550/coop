@@ -1,0 +1,64 @@
+{extend name="layout/member_base" /}
+{block name='member_main'}
+<style>
+    .search-form .normal {
+        text-align: right
+    }
+    .search-form .normal .file-input {
+        display: none
+    }
+</style>
+<div class="tabmenu">
+    <ul class="tab pngFix">
+        <li class="active"><a href="{:url('order/import')}">订单导入</a></li>
+    </ul>
+</div>
+<div class="alert alert-block">
+    <h4>导入规则 <a href="javascript:" class="show-map">地图</a></h4>
+    <ul>
+        <li>导入的商品必须是合约商品，且商品价格与合约商品价格一致。 </li>
+        <li>商品编号必须与合合约商品编号一致，且商品价格与合约商品价格一致。 </li>
+        <li>同收件人的同件商品,会自动合并数量</li>
+        <li>参照模板：<a href="{$base_url}/模板.xlsx">导入模板</a></li>
+    </ul>
+</div>
+<div class="dsm-friend-find">
+    <form id="search_form" method='post' enctype="multipart/form-data" action="{:url('order/importFile')}">
+        <div class="search-form">
+            <div class="normal">
+                <input type="file" name="iFile" class="file-input">
+                <span class="file-name"></span>
+                <a class="dsm-btn dsm-btn-green" onclick="selectFile()">选择文件</a>
+                <a href="javascript:" class="dsm-btn" onclick="uploadFile()">上传</a>
+            </div>
+        </div>
+    </form>
+    <div class="show-error" style="text-align: center;color:red;">
+        {if $error && is_array($error)}
+        {volist name='error' id='vo'}
+        {$vo}<br />
+        {/volist}
+        {else /}
+        {$error}
+        {/if}
+    </div>
+    <script>
+        function selectFile() {
+            $('.file-input').click();
+        }
+
+        $('.file-input').change(function () {
+            let file_name = $(this).val();
+            $('span.file-name').html(file_name);
+        })
+        let uploadFile = function () {
+            if ($('.file-input').val() == '') {
+                layer.msg('请选择上传文件');
+            } else {
+                $('#search_form').submit();
+            }
+        }
+
+    </script>
+</div>
+{/block}

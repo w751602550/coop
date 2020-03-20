@@ -1,0 +1,4 @@
+<?php
+
+
+!defined('MEMBER') && define('MEMBER', 'bin_member');

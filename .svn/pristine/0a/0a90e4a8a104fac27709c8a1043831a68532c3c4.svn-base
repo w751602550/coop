@@ -1,0 +1,214 @@
+<style>
+    .total-price-sum {
+        font-weight: bolder;
+        font-size: 16px;
+    }
+</style>
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-cf">全部订单列表</div>
+                </div>
+                <div class="widget-body am-fr">
+                    <div class="page_toolbar am-margin-bottom-xs am-cf">
+                        <form class="toolbar-form" id="my-form" method="post">
+                            {if condition="$request->action() eq 'all_list'"}
+                            <div class="am-u-sm-12 am-u-md-3">
+                                <div class="am-form-group">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a class="j-export am-btn am-btn-default am-btn-success"
+                                           href="javascript:;">
+                                            <span class="am-icon-download"></span> 导出订单
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {/if}
+                            <div class="am-u-sm-12 am-u-md-9">
+                                <div class="am fr">
+                                    {if condition="$request->action() eq 'all_list'"}
+                                    <div class="am-form-group am-fl">
+                                        <select name="status" data-am-selected="{btnSize: 'sm', placeholder: '订单状态'}">
+                                            <option value="">订单状态</option>
+                                            {volist name='statusList' id='vo'}
+                                            <option value="{$key}" {if $request->post('status') eq $key}selected{/if}>{$vo}
+                                            </option>
+                                            {/volist}
+                                        </select>
+                                    </div>
+                                    {/if}
+                                    <div class="am-form-group am-fl">
+                                        <select name="member_id"
+                                                data-am-selected="{btnSize: 'sm', searchBox:1,placeholder: '用户名称', maxHeight: 400}">
+                                            <option value=""></option>
+                                            {volist name='member' id='vo'}
+                                            <option value="{$vo.member_id}" {if $request->post('member_id') eq $vo.member_id}selected{/if}>{$vo.member_name}
+                                            </option>
+                                            {/volist}
+                                        </select>
+                                    </div>
+                                    <div class="am-form-group am-fl">
+                                        <div class="am-input-group am-input-group-sm tpl-form-border-form">
+                                            <input type="text" class="am-form-field" name="order_sn"
+                                                   placeholder="请输入订单号"
+                                                   value="{$request->post('order_sn')|raw}">
+                                            <div class="am-input-group-btn">
+                                                <button class="am-btn am-btn-default am-icon-search"
+                                                        type="submit"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="am-scrollable-horizontal am-u-sm-12">
+                        <form id="order-form" method="post" action="{:url('order/exportOrder')}">
+                            <table width="100%" class="am-table am-table-compact am-table-striped
+                         tpl-table-black am-text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox" class="check_all"></th>
+                                    <th>订单号</th>
+                                    <th>下单人</th>
+                                    <th>总价(¥)</th>
+                                    <th>付款方式</th>
+                                    <th>订单时间</th>
+                                    <th>付款单号</th>
+                                    <th>订单状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name='list' id='vo'}
+                                <tr>
+                                    <td class="am-text-middle">
+                                        <input type="checkbox" class="checkbox-item" name="order_id[]"
+                                               value="{$vo.order_id}" data-total-price="{$vo.total_price}">
+                                    </td>
+                                    <td class="am-text-middle">{$vo.order_sn}</td>
+                                    <td class="am-text-middle">{$vo.member_name}</td>
+                                    <td class="am-text-middle" style='color:#fc6d26'>{$vo.total_price}</td>
+                                    <td class="am-text-middle">
+                                        {$vo.payment_type_name}
+                                    </td>
+                                    <td class="am-text-middle">{$vo.create_time|date="Y-m-d H:i:s"}</td>
+                                    <td class="am-text-middle">{$vo.payment_sn}</td>
+                                    <td class="am-text-middle">{$statusList$vo.status]}</td>
+                                    <td class="am-text-middle">
+                                        <div class="tpl-table-black-operation">
+                                            <a href="{:url('order/edit',['order_id'=>$vo.order_id])}">
+                                                <i class="am-icon-pencil"></i> 更新
+                                            </a>
+                                            <a href="javascript:void(0);"
+                                               class="item-delete tpl-table-black-operation-del"
+                                               data-id="{$vo.order_id}">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/volist}
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="am-u-sm-12">
+                        <a class="delOrder am-btn am-btn-success am-btn-xs" href="javascript:;">
+                            删除
+                        </a>
+                        <a class="exportOrder am-btn am-btn-primary am-btn-xs" href="javascript:;">
+                            导出订单
+                        </a>
+                    </div>
+                    <div class="am-u-lg-12 am-cf text-center">
+                        <div class="am-fl pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总计：￥<span class="total-price-sum">0</span></div>
+                        </div>
+                        <div class="am-fr">{$list->render()|raw}</div>
+                        <div class="am-fr pagination-total am-margin-right">
+                            <div class="am-vertical-align-middle">总记录：{$list->total()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(function () {
+
+        $('.check_all').on('click', function () {
+            let type = $(this).prop('checked');
+            $('.checkbox-item').prop('checked', type);
+        });
+        $('input[type=checkbox]').on('change', function () {
+            if (!$(this).prop('checked'))
+                $('.check_all').prop('checked', false);
+            let totalPrice = 0;
+            $('.checkbox-item:checked').each(function () {
+                totalPrice += parseInt($(this).data('totalPrice'));
+            })
+            $('.total-price-sum').html(totalPrice);
+        })
+        $('.item-delete').delete('order_id', "{:url('order/delete')}", '删除后不可恢复，确定要删除吗？');
+        $('.delOrder').on('click', function () {
+            if ($('.checkbox-item:checked').length < 1) {
+                $.show_error('请勾选删除的订单');
+                return false;
+            }
+            let that = $(this);
+            layer.confirm('确定删除所有选择的订单?', function (index) {
+                that.attr('disabled', true);
+                layer.close(index);
+                let load = layer.load();
+                $.ajax({
+                    type: 'post',
+                    url: "{:url('order/deleteAll')}",
+                    data: $('#order-form').serialize(),
+                    success: function (res) {
+                        layer.close(load);
+                        that.attr('disabled', false)
+                        if (res.data.length != 0) {
+                            let str = '';
+                            for (let i = 0; i < res.data.length; i++) {
+                                str += res.data[i]['order_sn'] + '--' + res.data[i]['error'] + '<br />';
+                            }
+                            layer.open({
+                                type: 1,
+                                area: ['420px', '240px'],
+                                content: str,
+                                cancel: function (index, layero) {
+                                    location.reload()
+                                }
+                            });
+                        } else {
+                            $.show_success(res.msg);
+                        }
+                    }
+                })
+                layer.close(index);
+            });
+        });
+        $('.j-export').click(function () {
+            let data = {}, formData = $('#my-form').serializeArray();
+            $.each(formData, function () {
+                this.name !== 's' && (data[this.name] = this.value);
+            });
+            window.location = "{:url('order/export')}?" + $.urlEncode(data);
+        })
+        $('.exportOrder').click(function () {
+            if ($('.checkbox-item:checked').length < 1) {
+                $.show_error('请勾选需要导出的订单');
+                return false;
+            }
+            $('#order-form').submit();
+        })
+
+    });
+
+</script>
+

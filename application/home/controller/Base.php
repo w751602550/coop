@@ -5,7 +5,6 @@ namespace app\home\controller;
 use think\Controller;
 use think\facade\Session;
 
-
 class Base extends Controller
 {
     public $member;
